@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Pendaftaran Online - Rumah Pijat Boyolali</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f3ef;
+      color: #333;
+      padding: 20px 15px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 500px;
+      margin: auto;
+    }
+
+    .card {
+      background: white;
+      border-radius: 20px;
+      padding: 25px 20px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .header h1 {
+      font-size: 24px;
+      margin-bottom: 8px;
+      color: #5b4636;
+    }
+
+    .header p {
+      font-size: 14px;
+      color: #777;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    label {
+      display: block;
+      font-size: 14px;
+      font-weight: bold;
+      margin-bottom: 7px;
+      color: #4a4a4a;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      padding: 13px 14px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      font-size: 15px;
+      outline: none;
+      background: #fff;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      border-color: #9b8065;
+    }
+
+    textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    .location-box {
+      display: flex;
+      gap: 8px;
+    }
+
+    .location-box input {
+      flex: 1;
+    }
+
+    .location-btn {
+      border: none;
+      background: #80684f;
+      color: white;
+      padding: 0 14px;
+      border-radius: 10px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .submit-btn {
+      width: 100%;
+      border: none;
+      padding: 15px;
+      border-radius: 12px;
+      background: #25D366;
+      color: white;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 8px;
+    }
+
+    .submit-btn:hover {
+      background: #20bd5a;
+    }
+
+    .note {
+      margin-top: 22px;
+      padding: 15px;
+      background: #f8f5f0;
+      border-radius: 12px;
+      font-size: 13px;
+      line-height: 1.6;
+      color: #666;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 13px;
+      color: #777;
+      line-height: 1.7;
+    }
+
+    .footer strong {
+      color: #5b4636;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="card">
+
+    <div class="header">
+      <h1>Rumah Pijat Boyolali</h1>
+      <p>Format Pendaftaran Online</p>
+    </div>
+
+    <form id="registrationForm">
+
+      <!-- NAMA -->
+      <div class="form-group">
+        <label for="nama">Nama *</label>
+        <input
+          type="text"
+          id="nama"
+          placeholder="Masukkan nama"
+          required
+        >
+      </div>
+
+      <!-- USIA -->
+      <div class="form-group">
+        <label for="usia">Usia *</label>
+        <input
+          type="text"
+          id="usia"
+          placeholder="Contoh: 28 tahun"
+          required
+        >
+      </div>
+
+      <!-- ALAMAT -->
+      <div class="form-group">
+        <label for="alamat">Alamat *</label>
+        <textarea
+          id="alamat"
+          placeholder="Masukkan alamat lengkap"
+          required
+        ></textarea>
+      </div>
+
+      <!-- TREATMENT -->
+     <select id="treatment" required>
+  <option value="">-- Pilih Treatment --</option>
+  <option value="Pijat Capek">Pijat Capek</option>
+  <option value="Pijat Keluhan">Pijat Keluhan</option>
+</select>
+      <!-- TANGGAL JAM -->
+      <div class="form-group">
+        <label for="tanggalJam">Tanggal / Jam *</label>
+        <input
+          type="datetime-local"
+          id="tanggalJam"
+          required
+        >
+      </div>
+
+      <!-- INSTAGRAM -->
+      <div class="form-group">
+        <label for="instagram">Instagram</label>
+        <input
+          type="text"
+          id="instagram"
+          placeholder="@username"
+        >
+      </div>
+
+      <!-- HOMECARE / KE OUTLET -->
+      <div class="form-group">
+        <label for="jenisLayanan">Homecare / Ke Outlet *</label>
+
+        <select id="jenisLayanan" required>
+          <option value="">-- Pilih --</option>
+          <option value="Homecare">Homecare</option>
+          <option value="Ke Outlet">Ke Outlet</option>
+        </select>
+      </div>
+
+      <!-- SHARE LOCATION -->
+      <div class="form-group">
+        <label for="location">Share Location</label>
+
+        <div class="location-box">
+          <input
+            type="text"
+            id="location"
+            placeholder="Klik tombol lokasi"
+            readonly
+          >
+
+          <button
+            type="button"
+            class="location-btn"
+            onclick="getLocation()"
+          >
+            📍 Lokasi
+          </button>
+        </div>
+      </div>
+
+      <!-- NO WA -->
+      <div class="form-group">
+        <label for="noWa">No. WhatsApp *</label>
+        <input
+          type="tel"
+          id="noWa"
+          placeholder="08xxxxxxxxxx"
+          required
+        >
+      </div>
+
+      <button type="submit" class="submit-btn">
+        💬 Kirim Pendaftaran ke WhatsApp
+      </button>
+
+    </form>
+
+    <div class="note">
+      <strong>Note:</strong><br>
+      Tarif 100k untuk durasi pijat +-2 jam tergantung kondisi.
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <strong>"Relax, Healthy and Happy"</strong><br>
+    <strong>"HAPYY MASSAGE"</strong>
+    <br><br>
+    IG @rumahpijatboyolali<br>
+    TikTok @rumahpijatboyolali
+  </div>
+
+</div>
+
+
+<script>
+
+  // ==========================================
+  // NOMOR WHATSAPP TUJUAN
+  // ==========================================
+
+  const nomorWhatsApp = "6285134481399";
+
+
+  // ==========================================
+  // FORMAT TANGGAL
+  // ==========================================
+
+  function formatTanggal(tanggal) {
+
+    if (!tanggal) {
+      return "";
+    }
+
+    const date = new Date(tanggal);
+
+    const tanggalIndonesia = date.toLocaleDateString(
+      "id-ID",
+      {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric"
+      }
+    );
+
+    const jam = date.toLocaleTimeString(
+      "id-ID",
+      {
+        hour: "2-digit",
+        minute: "2-digit"
+      }
+    );
+
+    return tanggalIndonesia + " / " + jam;
+  }
+
+
+  // ==========================================
+  // AMBIL LOKASI
+  // ==========================================
+
+  function getLocation() {
+
+    const locationInput =
+      document.getElementById("location");
+
+    if (!navigator.geolocation) {
+
+      alert(
+        "Browser tidak mendukung fitur lokasi."
+      );
+
+      return;
+    }
+
+    locationInput.value =
+      "Mengambil lokasi...";
+
+    navigator.geolocation.getCurrentPosition(
+
+      function(position) {
+
+        const latitude =
+          position.coords.latitude;
+
+        const longitude =
+          position.coords.longitude;
+
+        const mapsLink =
+          "https://www.google.com/maps?q="
+          + latitude
+          + ","
+          + longitude;
+
+        locationInput.value =
+          mapsLink;
+      },
+
+      function(error) {
+
+        locationInput.value = "";
+
+        alert(
+          "Lokasi tidak berhasil diambil. Silakan izinkan akses lokasi."
+        );
+      }
+
+    );
+  }
+
+
+  // ==========================================
+  // KIRIM KE WHATSAPP
+  // ==========================================
+
+  document
+    .getElementById("registrationForm")
+    .addEventListener("submit", function(event) {
+
+      event.preventDefault();
+
+
+      const nama =
+        document.getElementById("nama").value.trim();
+
+      const usia =
+        document.getElementById("usia").value.trim();
+
+      const alamat =
+        document.getElementById("alamat").value.trim();
+
+      const treatment =
+        document.getElementById("treatment").value;
+
+      const tanggalJam =
+        formatTanggal(
+          document.getElementById("tanggalJam").value
+        );
+
+      const instagram =
+        document.getElementById("instagram").value.trim();
+
+      const jenisLayanan =
+        document.getElementById("jenisLayanan").value;
+
+      const location =
+        document.getElementById("location").value.trim();
+
+      const noWa =
+        document.getElementById("noWa").value.trim();
+
+
+      // ======================================
+      // PESAN WHATSAPP
+      // ======================================
+
+      const pesan =
+
+`*FORMAT PENDAFTARAN ONLINE*
+Rumah_Pijat_Boyolali
+
+Nama                     : ${nama}
+Usia                       : ${usia}
+Alamat                   : ${alamat}
+Treatment              : ${treatment}
+Tanggal/Jam          : ${tanggalJam}
+Instagram              : ${instagram || "-"}
+Homecare/keoutlet : ${jenisLayanan}
+Sharelocation        : ${location || "-"}
+No WA                    : ${noWa}
+
+*"Relax, Healthy and Happy"*
+     *"HAPYY MASSAGE"*
+
+note:
+Tarif 100k untuk durasi pijat +-2jam tergantung kondisi
+
+IG @rumahpijatboyolali
+TikTok @rumahpijatboyolali`;
+
+
+      // ======================================
+      // BUKA WHATSAPP
+      // ======================================
+
+      const url =
+        "https://wa.me/"
+        + nomorWhatsApp
+        + "?text="
+        + encodeURIComponent(pesan);
+
+
+      window.open(url, "_blank");
+
+    });
+
+</script>
+
+</body>
+</html>
