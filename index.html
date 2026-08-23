@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rumah Pijat Boyolali</title>
+<style>
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#17120d;
+  color:#333;
+}
+.container{
+  max-width:480px;
+  margin:auto;
+  padding:20px;
+}
+.card{
+  background:#fff8ed;
+  border-radius:25px;
+  padding:25px;
+  box-shadow:0 10px 35px #0005;
+}
+.logo{
+  width:150px;
+  display:block;
+  margin:0 auto 15px;
+  border-radius:15px;
+}
+h1{
+  text-align:center;
+  color:#9b702c;
+}
+.tagline{
+  text-align:center;
+  font-style:italic;
+  margin-bottom:15px;
+}
+.music{
+  width:100%;
+  padding:12px;
+  border:0;
+  border-radius:12px;
+  background:#b8893d;
+  color:white;
+  font-weight:bold;
+  margin-bottom:20px;
+}
+input,select,textarea{
+  width:100%;
+  padding:13px;
+  margin:7px 0 15px;
+  border-radius:12px;
+  border:1px solid #ddd;
+  box-sizing:border-box;
+}
+button.submit{
+  width:100%;
+  padding:15px;
+  border:0;
+  border-radius:15px;
+  background:#25d366;
+  color:white;
+  font-size:17px;
+  font-weight:bold;
+}
+.note{
+  margin-top:20px;
+  background:#f2d38b;
+  padding:18px;
+  border-radius:18px;
+  text-align:center;
+}
+.note b{
+  font-size:28px;
+  color:#7a4d00;
+}
+.social{
+  text-align:center;
+  margin-top:20px;
+}
+a{
+  color:#9b702c;
+  text-decoration:none;
+  font-weight:bold;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="card">
+
+<img src="logo.png" class="logo">
+
+<h1>Rumah Pijat Boyolali</h1>
+<div class="tagline">"Relax, Healthy and Happy"</div>
+
+<button class="music" onclick="musik()">🎵 Putar Suasana Relax</button>
+
+<audio id="audio" loop>
+<source src="rpb1.mp3" type="audio/mpeg">
+</audio>
+
+<form id="form">
+<input id="nama" placeholder="Nama" required>
+<input id="usia" placeholder="Usia" required>
+<textarea id="alamat" placeholder="Alamat" required></textarea>
+
+<select id="treatment" required>
+<option value="">Pilih Treatment</option>
+<option>Pijat Capek</option>
+<option>Pijat Keluhan</option>
+</select>
+
+<input id="tanggal" type="datetime-local" required>
+<input id="instagram" placeholder="Instagram">
+<select id="jenis" required>
+<option value="">Homecare / Ke Outlet</option>
+<option>Homecare</option>
+<option>Ke Outlet</option>
+</select>
+
+<input id="lokasi" placeholder="Share Location">
+<input id="wa" placeholder="No WhatsApp" required>
+
+<button class="submit">💬 Kirim Pendaftaran</button>
+</form>
+
+<div class="note">
+✨ PROMO PIJAT ✨<br>
+<b>100K</b><br>
+⏱ Durasi ± 2 Jam<br>
+Tergantung kondisi tubuh
+</div>
+
+<div class="social">
+📸 <a href="https://www.instagram.com/rumahpijatboyolali" target="_blank">
+Instagram @rumahpijatboyolali</a><br><br>
+🎵 <a href="https://www.tiktok.com/@rumahpijatboyolali" target="_blank">
+TikTok @rumahpijatboyolali</a>
+</div>
+
+</div>
+</div>
+
+<script>
+let hidup=false;
+function musik(){
+ let a=document.getElementById("audio");
+ if(hidup){a.pause();hidup=false;}
+ else{a.play();hidup=true;}
+}
+
+document.getElementById("form").onsubmit=function(e){
+e.preventDefault();
+
+let pesan=`*FORMAT PENDAFTARAN ONLINE*
+Rumah_Pijat_Boyolali
+
+Nama                     : ${nama.value}
+Usia                       : ${usia.value}
+Alamat                   : ${alamat.value}
+Treatment              : ${treatment.value}
+Tanggal/Jam          : ${tanggal.value}
+Instagram              : ${instagram.value || "-"}
+Homecare/keoutlet : ${jenis.value}
+Sharelocation        : ${lokasi.value || "-"}
+No WA                    : ${wa.value}
+
+*"Relax, Healthy and Happy"*
+     *"HAPYY MASSAGE"*
+
+note:
+Tarif 100k untuk durasi pijat +-2jam tergantung kondisi
+
+IG @rumahpijatboyolali
+TikTok @rumahpijatboyolali`;
+
+window.open("https://wa.me/6285134481399?text="+encodeURIComponent(pesan));
+}
+</script>
+</body>
+</html>
