@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rumah Pijat Boyolali</title>
+<style>
+body{margin:0;background:#17100b;font-family:Arial,sans-serif}
+.container{max-width:480px;margin:auto;padding:20px}
+.card{background:#fff8ed;border-radius:25px;padding:22px;box-shadow:0 10px 30px #0005}
+.logo{display:block;width:150px;margin:0 auto 15px;object-fit:contain}
+h1{text-align:center;color:#9b6b25}
+.tag{text-align:center;font-style:italic}
+button{cursor:pointer}
+.music{width:100%;margin:18px 0;padding:13px;border:0;border-radius:12px;background:#b8893d;color:#fff;font-weight:bold}
+input,textarea,select{width:100%;padding:13px;margin-bottom:14px;border-radius:12px;border:1px solid #ddd;box-sizing:border-box}
+textarea{height:90px}
+.location{display:flex;gap:8px}
+.location input{flex:1}
+.locbtn{background:#9b702c;color:white;border:0;border-radius:12px;padding:0 14px}
+.submit{width:100%;padding:15px;background:#25d366;color:white;border:0;border-radius:14px;font-weight:bold;font-size:17px}
+.note{margin-top:20px;text-align:center;background:#f3d48d;padding:18px;border-radius:18px}
+.note b{font-size:30px;color:#7b4d00}
+.social{text-align:center;margin-top:20px}
+a{color:#9b702c;font-weight:bold}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="card">
+
+<img src="logo.png" class="logo">
+<h1>Rumah Pijat Boyolali</h1>
+<div class="tag">"Relax, Healthy and Happy"</div>
+
+<button class="music" id="musicBtn" onclick="playMusic()">🎵 Putar Suasana Relax</button>
+<audio id="music" loop>
+<source src="rpb1.mp3" type="audio/mpeg">
+</audio>
+
+<form id="form">
+<input id="nama" placeholder="Nama *" required>
+<input id="usia" placeholder="Usia *" required>
+<textarea id="alamat" placeholder="Alamat *" required></textarea>
+
+<select id="treatment" required>
+<option value="">Pilih Treatment *</option>
+<option>Pijat Capek</option>
+<option>Pijat Keluhan</option>
+</select>
+
+<input id="tanggal" type="datetime-local" required>
+
+<input id="instagram" placeholder="Instagram">
+
+<select id="jenis" required>
+<option value="">Homecare / Ke Outlet *</option>
+<option>Homecare</option>
+<option>Ke Outlet</option>
+</select>
+
+<div class="location">
+<input id="lokasi" placeholder="Share Location" readonly>
+<button type="button" class="locbtn" onclick="ambilLokasi()">📍</button>
+</div>
+
+<input id="wa" placeholder="No WhatsApp *" required>
+
+<button class="submit">💬 Kirim Pendaftaran</button>
+</form>
+
+<div class="note">
+✨ PROMO PIJAT ✨<br>
+<b>100K</b><br>
+⏱ Durasi ± 2 Jam<br>
+Tergantung kondisi tubuh
+</div>
+
+<div class="social">
+📸 <a href="https://www.instagram.com/rumahpijatboyolali" target="_blank">Instagram</a><br><br>
+🎵 <a href="https://www.tiktok.com/@rumahpijatboyolali" target="_blank">TikTok</a>
+</div>
+
+</div>
+</div>
+
+<script>
+let musikNyala=false;
+
+function playMusic(){
+ const audio=document.getElementById("music");
+ const btn=document.getElementById("musicBtn");
+
+ if(musikNyala){
+  audio.pause();
+  btn.innerHTML="🎵 Putar Suasana Relax";
+  musikNyala=false;
+ }else{
+  audio.play();
+  btn.innerHTML="🔇 Matikan Musik";
+  musikNyala=true;
+ }
+}
+
+function ambilLokasi(){
+ navigator.geolocation.getCurrentPosition(function(pos){
+  document.getElementById("lokasi").value=
+  "https://maps.google.com/?q="+pos.coords.latitude+","+pos.coords.longitude;
+ },function(){
+  alert("Izin lokasi belum diberikan");
+ });
+}
+
+document.getElementById("form").onsubmit=function(e){
+e.preventDefault();
+
+let p=`*FORMAT PENDAFTARAN ONLINE*
+Rumah_Pijat_Boyolali
+
+Nama                     : ${nama.value}
+Usia                       : ${usia.value}
+Alamat                   : ${alamat.value}
+Treatment              : ${treatment.value}
+Tanggal/Jam          : ${tanggal.value}
+Instagram              : ${instagram.value||"-"}
+Homecare/keoutlet : ${jenis.value}
+Sharelocation        : ${lokasi.value||"-"}
+No WA                    : ${wa.value}
+
+*"Relax, Healthy and Happy"*
+*"HAPYY MASSAGE"*
+
+note:
+Tarif 100k untuk durasi pijat +-2jam tergantung kondisi
+
+IG @rumahpijatboyolali
+TikTok @rumahpijatboyolali`;
+
+window.open("https://wa.me/6285134481399?text="+encodeURIComponent(p));
+}
+</script>
+</body>
+</html>
