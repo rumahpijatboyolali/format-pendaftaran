@@ -1,143 +1,172 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rumah Pijat Boyolali</title>
-<style>
-body{margin:0;background:#17100b;font-family:Arial,sans-serif}
-.container{max-width:480px;margin:auto;padding:20px}
-.card{background:#fff8ed;border-radius:25px;padding:22px;box-shadow:0 10px 30px #0005}
-.logo{display:block;width:150px;margin:0 auto 15px;object-fit:contain}
-h1{text-align:center;color:#9b6b25}
-.tag{text-align:center;font-style:italic}
-button{cursor:pointer}
-.music{width:100%;margin:18px 0;padding:13px;border:0;border-radius:12px;background:#b8893d;color:#fff;font-weight:bold}
-input,textarea,select{width:100%;padding:13px;margin-bottom:14px;border-radius:12px;border:1px solid #ddd;box-sizing:border-box}
-textarea{height:90px}
-.location{display:flex;gap:8px}
-.location input{flex:1}
-.locbtn{background:#9b702c;color:white;border:0;border-radius:12px;padding:0 14px}
-.submit{width:100%;padding:15px;background:#25d366;color:white;border:0;border-radius:14px;font-weight:bold;font-size:17px}
-.note{margin-top:20px;text-align:center;background:#f3d48d;padding:18px;border-radius:18px}
-.note b{font-size:30px;color:#7b4d00}
-.social{text-align:center;margin-top:20px}
-a{color:#9b702c;font-weight:bold}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#17100b">
+  <title>Reservasi Rumah Pijat Boyolali</title>
+  <style>
+    :root{color-scheme:light;--brown:#17100b;--gold:#b8893d;--cream:#fff8ed;--ink:#38291c;--line:#ddd8d2;--muted:#8b8177;--green:#25d366}
+    *{box-sizing:border-box}
+    html{min-height:100%;background:var(--brown)}
+    body{margin:0;min-height:100vh;padding:16px;background:var(--brown);font-family:Arial,system-ui,sans-serif;color:var(--ink)}
+    button,.admin-link{-webkit-tap-highlight-color:transparent;touch-action:manipulation;transition:transform .14s ease,filter .14s ease,box-shadow .14s ease}
+    button:active,.admin-link:active{transform:scale(.97);filter:brightness(.92)}
+    button:focus-visible,.admin-link:focus-visible{outline:3px solid #d39a43;outline-offset:3px}
+    .container{width:100%;max-width:480px;margin:0 auto}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    .card{padding:20px 16px 22px;background:var(--cream);border-radius:22px;box-shadow:0 10px 30px #0005}
+    .logo{display:block;width:112px;height:112px;object-fit:contain;margin:0 auto 12px}
+    h1{margin:0;text-align:center;color:#9b6b25;font-size:clamp(22px,6vw,28px);line-height:1.2}
+    .tag{margin:12px 0 0;text-align:center;font-size:13px;font-style:italic}
+    .music{width:100%;margin:15px 0 12px;padding:11px;border:0;border-radius:10px;background:var(--gold);color:#fff;font-weight:700;cursor:pointer}
+    form{display:grid;gap:9px}
+    input,textarea,select{width:100%;min-width:0;min-height:44px;padding:11px 12px;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink);font:inherit;font-size:14px}
+    input:focus,textarea:focus,select:focus{outline:2px solid #b8893d55;border-color:var(--gold)}
+    textarea{min-height:76px;resize:vertical}
+    .location{display:flex;gap:7px;align-items:center}
+    .location input{flex:1}
+    .locbtn{display:inline-flex;align-items:center;justify-content:center;flex:0 0 46px;height:44px;border:0;border-radius:10px;background:#9b702c;color:#fff;font-size:20px;cursor:pointer}
+    .locbtn.is-loading{animation:pulse .8s ease-in-out infinite alternate}
+    @keyframes pulse{to{transform:scale(.92);box-shadow:0 0 0 5px #b8893d55}}
+    .help{margin:-3px 2px 2px;color:var(--muted);font-size:11px;line-height:1.4}
+    .location-status,.form-status{display:none;padding:9px 11px;border-radius:9px;font-size:12px;line-height:1.45}
+    .location-status.visible,.form-status.visible{display:block;background:#e5f5e8;color:#286343}
+    .location-status.error,.form-status.error{display:block;background:#fde8e5;color:#a52e28}
+    .submit{width:100%;min-height:48px;margin-top:2px;border:0;border-radius:11px;background:var(--green);color:#fff;font-size:15px;font-weight:800;cursor:pointer}
+    .submit:disabled{opacity:.65;cursor:wait}
+    .note{margin-top:14px;padding:13px 10px;border-radius:15px;background:#f3d48d;text-align:center;color:#24180d;font-size:13px;line-height:1.55}
+    .note strong{display:block;color:#7b4d00;font-size:24px;line-height:1.2}
+    .social{margin-top:15px;text-align:center;font-size:13px;line-height:1.8}
+    a{color:#9b702c;font-weight:700}
+    .admin-link{display:inline-flex;align-items:center;justify-content:center;margin-top:18px;padding:9px 14px;border:1px solid #d8c5a8;border-radius:10px;color:#71522e;text-decoration:none;font-size:12px;font-weight:700}
+    .admin-link:hover{background:#f3eadb}
+    @media(prefers-reduced-motion:reduce){button,.admin-link{transition:none}.locbtn.is-loading{animation:none}}
+    @media(max-width:360px){body{padding:10px}.card{padding:17px 13px;border-radius:18px}.logo{width:96px;height:96px}}
+  </style>
 </head>
 <body>
-<div class="container">
-<div class="card">
+  <main class="container">
+    <section class="card" aria-labelledby="brandTitle">
+      <img class="logo" src="https://rumahpijatboyolali.github.io/format-pendaftaran/logo.png" alt="Logo Rumah Pijat Boyolali">
+      <h1 id="brandTitle">Rumah Pijat Boyolali</h1>
+      <p class="tag">"Relax, Healthy and Happy"</p>
 
-<img src="logo.png" class="logo">
-<h1>Rumah Pijat Boyolali</h1>
-<div class="tag">"Relax, Healthy and Happy"</div>
+      <button class="music" id="musicBtn" type="button">🎵 Putar Suasana Relax</button>
+      <audio id="music" loop preload="none"><source src="https://rumahpijatboyolali.github.io/format-pendaftaran/rpb1.mp3" type="audio/mpeg"></audio>
 
-<button class="music" id="musicBtn" onclick="playMusic()">🎵 Putar Suasana Relax</button>
-<audio id="music" loop>
-<source src="rpb1.mp3" type="audio/mpeg">
-</audio>
+      <form id="reservationForm" action="https://script.google.com/macros/s/AKfycbwk9OOgouAIw1scYBqg3sDHWeoKdHY1t8GBSJER1zl10eJlVQrFQk-CW9iKUCl4GuDAeg/exec" method="post" target="_top">
+        <input id="nama" name="nama" type="text" placeholder="Nama *" autocomplete="name" maxlength="120" required>
+        <input id="usia" name="usia" type="number" placeholder="Usia *" min="1" max="120" required>
+        <textarea id="alamat" name="alamat" placeholder="Alamat *" autocomplete="street-address" required></textarea>
+        <select id="treatment" name="treatment" required>
+          <option value="">Pilih Treatment *</option>
+          <option value="Pijat Capek">Pijat Capek</option>
+          <option value="Pijat Keluhan">Pijat Keluhan</option>
+        </select>
+        <label class="sr-only" for="tanggal">Tanggal reservasi</label>
+        <input id="tanggal" name="tanggal" type="date" required>
+        <select id="jam" name="jam" required aria-label="Pilih jam reservasi">
+          <option value="">Pilih Jam *</option>
+        </select>
+        <input id="instagram" name="instagram" type="text" placeholder="Instagram">
+        <select id="jenis" name="jenis" required>
+          <option value="">Homecare / Ke Outlet *</option>
+          <option value="Homecare">Homecare</option>
+          <option value="Ke Outlet">Ke Outlet</option>
+        </select>
+        <div class="location">
+          <input id="lokasi" name="lokasi" type="text" placeholder="Link Google Maps (opsional)" autocomplete="url" aria-label="Link lokasi Google Maps">
+          <button class="locbtn" id="locationBtn" type="button" aria-label="Ambil lokasi perangkat" title="Ambil lokasi perangkat">📍</button>
+        </div>
+        <small class="help">Tekan 📍 dan izinkan akses lokasi. Tautan Maps akan muncul di kolom ini.</small>
+        <div class="location-status" id="locationStatus" role="status" aria-live="polite"></div>
+        <input id="wa" name="wa" type="tel" placeholder="No WhatsApp *" autocomplete="tel" required>
+        <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
+        <button class="submit" id="submitBtn" type="submit">💬 Kirim Pendaftaran</button>
+      </form>
 
-<form id="form">
-<input id="nama" placeholder="Nama *" required>
-<input id="usia" placeholder="Usia *" required>
-<textarea id="alamat" placeholder="Alamat *" required></textarea>
+      <aside class="note">✨ PROMO PIJAT ✨<strong>100K</strong>⏱ Durasi ± 2 Jam<br>Tergantung kondisi tubuh</aside>
+      <div class="social">📸 <a href="https://www.instagram.com/rumahpijatboyolali" target="_blank" rel="noopener">Instagram</a><br><br>🎵 <a href="https://www.tiktok.com/@rumahpijatboyolali" target="_blank" rel="noopener">TikTok</a><br><a class="admin-link" href="https://script.google.com/macros/s/AKfycbwk9OOgouAIw1scYBqg3sDHWeoKdHY1t8GBSJER1zl10eJlVQrFQk-CW9iKUCl4GuDAeg/exec?page=admin">Login Admin</a></div>
+    </section>
+  </main>
+  <script>
+    const form=document.getElementById('reservationForm');
+    const dateInput=document.getElementById('tanggal');
+    const submitButton=document.getElementById('submitBtn');
+    const locationButton=document.getElementById('locationBtn');
+    const locationInput=document.getElementById('lokasi');
+    const locationStatus=document.getElementById('locationStatus');
+    const formStatus=document.getElementById('formStatus');
 
-<select id="treatment" required>
-<option value="">Pilih Treatment *</option>
-<option>Pijat Capek</option>
-<option>Pijat Keluhan</option>
-</select>
+    function localDateValue(date){return `${date.getFullYear()}-${String(date.getMonth()+1).padStart(2,'0')}-${String(date.getDate()).padStart(2,'0')}`}
+    dateInput.min=localDateValue(new Date());
 
-<input id="tanggal" type="datetime-local" required>
+    // Pilihan setiap 30 menit dari pukul 08.00 sampai 21.00.
+    const timeSelect=document.getElementById('jam');
+    for(let minutes=8*60;minutes<=21*60;minutes+=30){
+      const hour=String(Math.floor(minutes/60)).padStart(2,'0');
+      const minute=String(minutes%60).padStart(2,'0');
+      const option=document.createElement('option');
+      option.value=`${hour}:${minute}`;
+      option.textContent=option.value;
+      timeSelect.appendChild(option);
+    }
 
-<input id="instagram" placeholder="Instagram">
+    document.getElementById('musicBtn').addEventListener('click',async function(){
+      const audio=document.getElementById('music');
+      if(audio.paused){try{await audio.play();this.textContent='🔇 Matikan Musik'}catch(_){showFormStatus('Musik belum bisa diputar. Coba tekan tombol sekali lagi.','error')}}
+      else{audio.pause();this.textContent='🎵 Putar Suasana Relax'}
+    });
 
-<select id="jenis" required>
-<option value="">Homecare / Ke Outlet *</option>
-<option>Homecare</option>
-<option>Ke Outlet</option>
-</select>
+    function showFormStatus(message,type){formStatus.textContent=message;formStatus.className=`form-status visible ${type}`}
 
-<div class="location">
-<input id="lokasi" placeholder="Share Location" readonly>
-<button type="button" class="locbtn" onclick="ambilLokasi()">📍</button>
-</div>
+    locationButton.addEventListener('click',function(){
+      if(!('geolocation' in navigator)){
+        locationStatus.textContent='Browser ini tidak mendukung akses lokasi. Silakan tempel tautan Google Maps secara manual.';
+        locationStatus.className='location-status visible error';
+        return;
+      }
+      locationButton.disabled=true;
+      locationButton.textContent='…';
+      locationButton.classList.add('is-loading');
+      locationStatus.textContent='Mengambil lokasi perangkat… Izinkan akses lokasi jika browser meminta.';
+      locationStatus.className='location-status visible';
+      navigator.geolocation.getCurrentPosition(position=>{
+        const lat=position.coords.latitude;
+        const lng=position.coords.longitude;
+        locationInput.value=`https://maps.google.com/?q=${lat},${lng}`;
+        locationStatus.textContent='Lokasi berhasil diambil dan tautan Maps sudah terisi.';
+        locationStatus.className='location-status visible';
+        finishLocation();
+      },error=>{
+        const messages={1:'Akses lokasi ditolak. Izinkan lokasi untuk situs ini di pengaturan browser, lalu coba lagi.',2:'Lokasi belum tersedia. Periksa GPS dan koneksi internet, lalu coba lagi.',3:'Permintaan lokasi terlalu lama. Coba tekan tombol sekali lagi.'};
+        locationStatus.textContent=messages[error.code]||'Gagal mengambil lokasi. Silakan tempel tautan Maps secara manual.';
+        locationStatus.className='location-status visible error';
+        finishLocation();
+      },{enableHighAccuracy:true,timeout:20000,maximumAge:0});
+    });
 
-<input id="wa" placeholder="No WhatsApp *" required>
+    function finishLocation(){locationButton.disabled=false;locationButton.textContent='📍';locationButton.classList.remove('is-loading')}
 
-<button class="submit">💬 Kirim Pendaftaran</button>
-</form>
+    // Submit native ke Apps Script: browser berpindah ke halaman status setelah
+    // data tersimpan. Tidak memakai fetch/iframe/popup yang bisa diblokir browser.
+    form.addEventListener('submit',function(event){
+      if(!form.reportValidity())return;
+      if(dateInput.value<localDateValue(new Date())){
+        event.preventDefault();
+        showFormStatus('Tanggal reservasi tidak boleh lewat.','error');
+        return;
+      }
+      submitButton.disabled=true;
+      submitButton.textContent='Menyimpan reservasi…';
+      showFormStatus('Mengirim pendaftaran ke jadwal…','success');
+    });
 
-<div class="note">
-✨ PROMO PIJAT ✨<br>
-<b>100K</b><br>
-⏱ Durasi ± 2 Jam<br>
-Tergantung kondisi tubuh
-</div>
-
-<div class="social">
-📸 <a href="https://www.instagram.com/rumahpijatboyolali" target="_blank">Instagram</a><br><br>
-🎵 <a href="https://www.tiktok.com/@rumahpijatboyolali" target="_blank">TikTok</a>
-</div>
-
-</div>
-</div>
-
-<script>
-let musikNyala=false;
-
-function playMusic(){
- const audio=document.getElementById("music");
- const btn=document.getElementById("musicBtn");
-
- if(musikNyala){
-  audio.pause();
-  btn.innerHTML="🎵 Putar Suasana Relax";
-  musikNyala=false;
- }else{
-  audio.play();
-  btn.innerHTML="🔇 Matikan Musik";
-  musikNyala=true;
- }
-}
-
-function ambilLokasi(){
- navigator.geolocation.getCurrentPosition(function(pos){
-  document.getElementById("lokasi").value=
-  "https://maps.google.com/?q="+pos.coords.latitude+","+pos.coords.longitude;
- },function(){
-  alert("Izin lokasi belum diberikan");
- });
-}
-
-document.getElementById("form").onsubmit=function(e){
-e.preventDefault();
-
-let p=`*FORMAT PENDAFTARAN ONLINE*
-Rumah_Pijat_Boyolali
-
-Nama                     : ${nama.value}
-Usia                       : ${usia.value}
-Alamat                   : ${alamat.value}
-Treatment              : ${treatment.value}
-Tanggal/Jam          : ${tanggal.value}
-Instagram              : ${instagram.value||"-"}
-Homecare/keoutlet : ${jenis.value}
-Sharelocation        : ${lokasi.value||"-"}
-No WA                    : ${wa.value}
-
-*"Relax, Healthy and Happy"*
-*"HAPYY MASSAGE"*
-
-note:
-Tarif 100k untuk durasi pijat +-2jam tergantung kondisi
-
-IG @rumahpijatboyolali
-TikTok @rumahpijatboyolali`;
-
-window.open("https://wa.me/6285134481399?text="+encodeURIComponent(p));
-}
-</script>
+    document.addEventListener('click',event=>{
+      const button=event.target.closest('button,.admin-link');
+      if(button&&!button.disabled){button.animate([{transform:'scale(1)'},{transform:'scale(.96)'},{transform:'scale(1)'}],{duration:220})}
+    });
+  </script>
 </body>
 </html>
