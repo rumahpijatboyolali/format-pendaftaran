@@ -31,6 +31,7 @@
     const button=document.getElementById('locationButton');
     const statusBox=document.getElementById('status');
     let sedangMengambil=false;
+    let requestId=0;
 
     function status(message,type){
       statusBox.textContent=message;
@@ -38,16 +39,27 @@
     }
 
     function ambilLokasi(){
-      if(sedangMengambil)return;
+      // If the automatic attempt is waiting for permission, a real button tap
+      // restarts the request with a direct user gesture for browser permission.
+      if(sedangMengambil){requestId++;sedangMengambil=false;}
       if(!navigator.geolocation){
         status('Browser ini tidak mendukung GPS. Coba buka tautan di Chrome atau Firefox terbaru.','error');
         return;
       }
       sedangMengambil=true;
-      button.disabled=true;
-      button.textContent='Mengambil lokasi…';
+      const currentRequest=++requestId;
+      button.disabled=false;
+      button.textContent='📍 Ketuk untuk izinkan / coba lagi';
       status('Pastikan izin lokasi untuk situs ini dipilih “Izinkan”.','');
+      window.setTimeout(()=>{
+        if(!sedangMengambil||currentRequest!==requestId)return;
+        sedangMengambil=false;
+        button.disabled=false;
+        button.textContent='📍 Coba Lagi';
+        status('Permintaan lokasi belum dijawab. Izinkan lokasi di browser, lalu tekan tombol untuk mencoba lagi.','error');
+      },22000);
       navigator.geolocation.getCurrentPosition(position=>{
+        if(currentRequest!==requestId)return;
         const latitude=position.coords.latitude;
         const longitude=position.coords.longitude;
         const mapsUrl=`https://maps.google.com/?q=${latitude},${longitude}`;
@@ -57,8 +69,10 @@
         }else{
           status('Lokasi berhasil diambil: '+mapsUrl,'success');
         }
+        button.disabled=true;
         button.textContent='✅ Lokasi Berhasil';
       },error=>{
+        if(currentRequest!==requestId)return;
         const errors={
           1:'Izin lokasi ditolak. Izinkan lokasi untuk situs ini di pengaturan browser, lalu tekan tombol untuk mencoba lagi.',
           2:'Lokasi belum tersedia. Aktifkan GPS/perizinan lokasi perangkat, lalu coba lagi.',
@@ -71,8 +85,7 @@
       },{enableHighAccuracy:true,timeout:20000,maximumAge:60000});
     }
 
-    // Try immediately after the page opens; the visible button remains available
-    // for browsers that require another direct user gesture before asking GPS.
+    status('Mencoba mengambil lokasi. Jika browser menunggu izin, tekan tombol untuk memulai ulang permintaan GPS.','');
     ambilLokasi();
   </script>
 </body>
