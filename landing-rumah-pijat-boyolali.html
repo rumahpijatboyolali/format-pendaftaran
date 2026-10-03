@@ -44,7 +44,7 @@
     }
     a{color:inherit}
     .page{width:min(100%,1000px);animation:arrive .7s ease both}
-    .brand{display:flex;align-items:center;justify-content:center;gap:12px;margin:0 auto 22px;color:#fff7ea}
+    .brand{display:flex;align-items:center;justify-content:center;gap:12px;margin:0 auto 22px;color:#fff7ea;animation:soft-rise .65s .08s cubic-bezier(.2,.7,.2,1) both}
     .brand img{width:48px;height:48px;object-fit:contain;border-radius:50%;background:var(--cream);padding:3px}
     .brand-name{font-size:13px;font-weight:750;letter-spacing:.12em;text-transform:uppercase}
     .brand-place{display:block;margin-top:4px;color:var(--gold-light);font-size:10px;font-weight:550;letter-spacing:.2em}
@@ -59,21 +59,23 @@
         var(--cream);
       box-shadow:0 28px 80px rgba(0,0,0,.28),inset 0 0 0 8px rgba(255,255,255,.52);
       text-align:center;
+      animation:card-arrive .9s .12s cubic-bezier(.2,.7,.2,1) both;
     }
     .card:before,.card:after{position:absolute;content:"";pointer-events:none;border:1px solid rgba(184,137,61,.2);border-radius:50%}
     .card:before{width:390px;height:390px;right:-235px;top:-235px}
     .card:after{width:280px;height:280px;left:-205px;bottom:-205px}
-    .ornament{display:grid;place-items:center;width:58px;height:58px;margin:0 auto 20px;border:1px solid var(--gold-light);border-radius:50%;color:var(--gold);background:#fffdf8;box-shadow:0 0 0 7px rgba(184,137,61,.08)}
+    .ornament{display:grid;place-items:center;width:58px;height:58px;margin:0 auto 20px;border:1px solid var(--gold-light);border-radius:50%;color:var(--gold);background:#fffdf8;box-shadow:0 0 0 7px rgba(184,137,61,.08);animation:seal-arrive .8s .38s cubic-bezier(.2,.7,.2,1) both}
     .ornament svg{width:26px;height:26px}
-    .eyebrow{margin:0 0 17px;color:#987034;font-size:11px;font-weight:800;letter-spacing:.25em;text-transform:uppercase}
-    h1{max-width:780px;margin:0 auto;color:var(--espresso);font-family:Georgia,"Times New Roman",serif;font-size:clamp(34px,7vw,66px);font-weight:500;letter-spacing:-.045em;line-height:1.12}
+    .eyebrow{margin:0 0 17px;color:#987034;font-size:11px;font-weight:800;letter-spacing:.25em;text-transform:uppercase;animation:soft-rise .65s .48s ease both}
+    h1{max-width:780px;margin:0 auto;color:var(--espresso);font-family:Georgia,"Times New Roman",serif;font-size:clamp(34px,7vw,66px);font-weight:500;letter-spacing:-.045em;line-height:1.12;animation:soft-rise .8s .58s cubic-bezier(.2,.7,.2,1) both}
     h1 em{color:#9c702f;font-style:normal}
-    .rule{display:flex;align-items:center;justify-content:center;gap:11px;margin:27px auto 22px;color:var(--gold)}
-    .rule:before,.rule:after{width:min(16vw,86px);height:1px;content:"";background:var(--line)}
-    .rule span{font-size:12px}
-    .message{max-width:570px;margin:0 auto;color:var(--muted);font-size:clamp(14px,2vw,17px);line-height:1.8}
-    .signature{margin:22px auto 0;color:#70583c;font-family:Georgia,"Times New Roman",serif;font-size:16px;font-style:italic}
-    .actions{display:flex;justify-content:center;flex-wrap:wrap;gap:11px;margin-top:34px}
+    .rule{display:flex;align-items:center;justify-content:center;gap:11px;margin:27px auto 22px;color:var(--gold);animation:soft-rise .6s 1.02s ease both}
+    .rule:before,.rule:after{width:min(16vw,86px);height:1px;content:"";background:var(--line);transform:scaleX(0);animation:line-open .65s 1.08s ease-out both}
+    .rule:before{transform-origin:right}.rule:after{transform-origin:left}
+    .rule span{font-size:12px;animation:star-glow 2.8s 1.55s ease-in-out infinite}
+    .message{max-width:570px;margin:0 auto;color:var(--muted);font-size:clamp(14px,2vw,17px);line-height:1.8;animation:soft-rise .7s 1.12s ease both}
+    .signature{margin:22px auto 0;color:#70583c;font-family:Georgia,"Times New Roman",serif;font-size:16px;font-style:italic;animation:soft-rise .7s 1.25s ease both}
+    .actions{display:flex;justify-content:center;flex-wrap:wrap;gap:11px;margin-top:34px;animation:soft-rise .7s 1.38s ease both}
     .button{min-height:48px;display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:0 21px;border:1px solid transparent;border-radius:12px;text-decoration:none;font-size:13px;font-weight:750;transition:transform .18s ease,box-shadow .18s ease,background .18s ease}
     .button:hover{transform:translateY(-2px)}
     .button:focus-visible{outline:3px solid var(--gold-light);outline-offset:3px}
@@ -82,11 +84,16 @@
     .button-secondary{border-color:var(--line);color:#62472a;background:rgba(255,255,255,.62)}
     .button-secondary:hover{border-color:var(--gold-light);background:white}
     .button svg{width:17px;height:17px;flex:none}
-    .footer{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:22px 5px 0;color:rgba(255,247,234,.66);font-size:11px}
+    .footer{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:22px 5px 0;color:rgba(255,247,234,.66);font-size:11px;animation:soft-rise .65s 1.52s ease both}
     .social{display:flex;gap:16px}
     .social a{text-decoration:none}
     .social a:hover{color:var(--gold-light)}
     @keyframes arrive{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes soft-rise{from{opacity:0;transform:translateY(13px);filter:blur(3px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}
+    @keyframes card-arrive{from{opacity:0;transform:translateY(14px) scale(.988)}to{opacity:1;transform:translateY(0) scale(1)}}
+    @keyframes seal-arrive{from{opacity:0;transform:translateY(8px) scale(.82) rotate(-8deg)}to{opacity:1;transform:translateY(0) scale(1) rotate(0)}}
+    @keyframes line-open{to{transform:scaleX(1)}}
+    @keyframes star-glow{0%,100%{opacity:.72;transform:scale(1)}50%{opacity:1;transform:scale(1.13)}}
     @media(max-width:560px){
       body{padding:16px}
       .brand{margin-bottom:17px}
@@ -97,7 +104,11 @@
       .button{width:100%}
       .footer{flex-direction:column;justify-content:center;margin-top:18px;text-align:center}
     }
-    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.page{animation:none}.button{transition:none}.button:hover{transform:none}}
+    @media(prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      .page,.brand,.card,.ornament,.eyebrow,h1,.rule,.rule:before,.rule:after,.rule span,.message,.signature,.actions,.footer{animation:none!important;opacity:1!important;transform:none!important;filter:none!important}
+      .button{transition:none}.button:hover{transform:none}
+    }
   </style>
 </head>
 <body>
