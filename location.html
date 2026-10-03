@@ -65,9 +65,13 @@
         const mapsUrl=`https://maps.google.com/?q=${latitude},${longitude}`;
         if(window.opener&&!window.opener.closed){
           window.opener.postMessage({type:'rpb-location-result',latitude,longitude,mapsUrl},'*');
-          status('Lokasi berhasil dikirim ke formulir. Anda bisa kembali ke tab reservasi.','success');
+          status('Lokasi berhasil dikirim. Kembali ke formulir…','success');
+          window.setTimeout(()=>{
+            try { window.opener.focus(); } catch (_) {}
+            window.close();
+          },500);
         }else{
-          status('Lokasi berhasil diambil: '+mapsUrl,'success');
+          status('Lokasi berhasil diambil, tetapi tab formulir tidak terhubung. Salin tautan ini ke formulir: '+mapsUrl,'error');
         }
         button.disabled=true;
         button.textContent='✅ Lokasi Berhasil';
