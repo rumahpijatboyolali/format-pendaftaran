@@ -65,7 +65,7 @@
       <button class="music" id="musicBtn" type="button">🎵 Putar Suasana Relax</button>
       <audio id="music" loop preload="none"><source src="https://rumahpijatboyolali.github.io/format-pendaftaran/rpb1.mp3" type="audio/mpeg"></audio>
 
-      <form id="reservationForm" action="<?= submitUrl ?>" method="post" target="_top">
+      <form id="reservationForm" action="https://script.google.com/macros/s/AKfycbwk9OOgouAIw1scYBqg3sDHWeoKdHY1t8GBSJER1zl10eJlVQrFQk-CW9iKUCl4GuDAeg/exec" method="post" target="_top">
         <input id="nama" name="nama" type="text" placeholder="Nama *" autocomplete="name" maxlength="120" required>
         <input id="usia" name="usia" type="number" placeholder="Usia *" min="1" max="120" required>
         <textarea id="alamat" name="alamat" placeholder="Alamat *" autocomplete="street-address" required></textarea>
@@ -232,6 +232,14 @@
     }
 
     form.addEventListener('submit', function(event) {
+      if (typeof google === 'undefined' || !google.script || !google.script.run) {
+        const action = form.getAttribute('action') || '';
+        if (!action.startsWith('https://script.google.com/macros/s/')) {
+          event.preventDefault();
+          setStatus('Form reservasi belum terhubung ke Apps Script. Hubungi admin.', 'error');
+        }
+        return; // Gunakan native POST dari GitHub Pages ke Apps Script.
+      }
       event.preventDefault();
       submitReservation();
     });
