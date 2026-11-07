@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#17100b">
+  <link rel="preconnect" href="https://rumahpijatboyolali.github.io" crossorigin>
+  <link rel="dns-prefetch" href="https://rumahpijatboyolali.github.io">
+  <link rel="preload" as="image" href="https://rumahpijatboyolali.github.io/format-pendaftaran/logo.png" fetchpriority="high">
   <link rel="icon" type="image/png" href="https://rumahpijatboyolali.github.io/format-pendaftaran/logo.png">
   <title>Reservasi Rumah Pijat Boyolali</title>
   <style>
@@ -33,7 +36,7 @@
     .locbtn.is-loading{animation:pulse .8s ease-in-out infinite alternate}
     @keyframes pulse{to{transform:scale(.92);box-shadow:0 0 0 5px #b8893d55}}
     .help{margin:-3px 2px 2px;color:var(--muted);font-size:11px;line-height:1.4}
-    .location-status,.form-status{display:none;padding:9px 11px;border-radius:9px;font-size:12px;line-height:1.45}
+    .location-status,.form-status{display:none;min-height:36px;padding:9px 11px;border-radius:9px;font-size:12px;line-height:1.45;contain:layout}
     .location-status.visible,.form-status.visible{display:block;background:#e5f5e8;color:#286343}
     .location-status.error,.form-status.error{display:block;background:#fde8e5;color:#a52e28}
     .submit{width:100%;min-height:48px;margin-top:2px;border:0;border-radius:11px;background:var(--green);color:#fff;font-size:15px;font-weight:800;cursor:pointer}
@@ -50,7 +53,7 @@
   <main class="container">
     <section class="card" aria-labelledby="brandTitle">
       <a class="back-link" href="https://rumahpijatboyolali.github.io/format-pendaftaran/landing-rumah-pijat-boyolali.html" aria-label="Kembali ke halaman landing"><span aria-hidden="true">←</span> Kembali</a>
-      <img class="logo" src="https://rumahpijatboyolali.github.io/format-pendaftaran/logo.png" alt="Logo Rumah Pijat Boyolali">
+      <img class="logo" src="https://rumahpijatboyolali.github.io/format-pendaftaran/logo.png" alt="Logo Rumah Pijat Boyolali" width="112" height="112" fetchpriority="high" decoding="async">
       <h1 id="brandTitle">Rumah Pijat Boyolali</h1>
       <p class="tag">"Relax, Healthy and Happy"</p>
 
@@ -94,7 +97,7 @@
     </section>
   </main>
   <script>
-    document.addEventListener('input',e=>{const el=e.target;if(!el.matches('input[type="text"],textarea'))return;const a=el.selectionStart,b=el.selectionEnd;const v=el.value.replace(/\b\p{L}/gu,c=>c.toLocaleUpperCase('id-ID'));if(v!==el.value){el.value=v;try{el.setSelectionRange(a,b)}catch(_){}}});
+    document.addEventListener('input',e=>{const el=e.target;if(!el.matches('input[type="text"],textarea')||e.isComposing)return;const a=el.selectionStart,b=el.selectionEnd;const v=el.value.replace(/(^|\s)(\S)/g,(m,s,l)=>s+l.toUpperCase());if(v!==el.value){el.value=v;try{el.setSelectionRange(a,b)}catch(_){}}});
     const form=document.getElementById('reservationForm');
     const dateInput=document.getElementById('tanggal');
     const submitButton=document.getElementById('submitBtn');
@@ -108,14 +111,16 @@
 
     // Pilihan setiap 30 menit dari pukul 08.00 sampai 21.00.
     const timeSelect=document.getElementById('jam');
+    const timeFrag=document.createDocumentFragment();
     for(let minutes=8*60;minutes<=21*60;minutes+=30){
       const hour=String(Math.floor(minutes/60)).padStart(2,'0');
       const minute=String(minutes%60).padStart(2,'0');
       const option=document.createElement('option');
       option.value=`${hour}:${minute}`;
       option.textContent=option.value;
-      timeSelect.appendChild(option);
+      timeFrag.appendChild(option);
     }
+    timeSelect.appendChild(timeFrag);
 
     document.getElementById('musicBtn').addEventListener('click',async function(){
       const audio=document.getElementById('music');
