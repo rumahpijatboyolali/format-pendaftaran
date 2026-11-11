@@ -35,6 +35,9 @@
     .locbtn{display:inline-flex;align-items:center;justify-content:center;flex:0 0 46px;height:44px;border:0;border-radius:10px;background:#9b702c;color:#fff;font-size:20px;cursor:pointer}
     .locbtn.is-loading{animation:pulse .8s ease-in-out infinite alternate}
     @keyframes pulse{to{transform:scale(.92);box-shadow:0 0 0 5px #b8893d55}}
+    .place-info{padding:11px 12px;border:1px solid #e6d8c2;border-radius:10px;background:#f7efdf;color:#5e4b35;font-size:12px;line-height:1.55}
+    .place-info[hidden]{display:none}
+    .place-info a{display:inline-block;margin-top:4px;color:#80571f;font-weight:800;text-underline-offset:2px}
     .help{margin:-3px 2px 2px;color:var(--muted);font-size:11px;line-height:1.4}
     .location-status,.form-status{display:none;min-height:36px;padding:9px 11px;border-radius:9px;font-size:12px;line-height:1.45;contain:layout}
     .location-status.visible,.form-status.visible{display:block;background:#e5f5e8;color:#286343}
@@ -81,6 +84,7 @@
           <option value="Ke Outlet">Outlet (OT)</option>
           <option value="Rumah">Rumah (RM)</option>
         </select>
+        <div class="place-info" id="placeInfo" role="status" aria-live="polite" hidden></div>
         <div class="location">
           <input id="lokasi" name="lokasi" type="text" placeholder="Link Google Maps (opsional)" autocomplete="url" aria-label="Link lokasi Google Maps">
           <button class="locbtn" id="locationBtn" type="button" aria-label="Ambil lokasi perangkat" title="Ambil lokasi perangkat">📍</button>
@@ -105,6 +109,30 @@
     const locationInput=document.getElementById('lokasi');
     const locationStatus=document.getElementById('locationStatus');
     const formStatus=document.getElementById('formStatus');
+    const placeSelect=document.getElementById('jenis');
+    const placeInfo=document.getElementById('placeInfo');
+
+    const placeDetails={
+      Homecare:{text:'Terapis datang ke rumah customer.'},
+      'Ke Outlet':{text:'Customer datang ke outlet Rumah Pijat Boyolali.',label:'Lihat lokasi outlet',url:'https://maps.app.goo.gl/aHkwbzasRmdKWS3g7'},
+      Rumah:{text:'Layanan dilakukan di Rumah Pijat Boyolali.',label:'Lihat lokasi Rumah',url:'https://maps.app.goo.gl/hcddMLWVSL3LMEJe8'}
+    };
+    placeSelect.addEventListener('change',()=>{
+      const detail=placeDetails[placeSelect.value];
+      placeInfo.replaceChildren();
+      if(!detail){placeInfo.hidden=true;return}
+      placeInfo.append(document.createTextNode(detail.text));
+      if(detail.url){
+        placeInfo.append(document.createElement('br'));
+        const mapLink=document.createElement('a');
+        mapLink.href=detail.url;
+        mapLink.target='_blank';
+        mapLink.rel='noopener';
+        mapLink.textContent=detail.label;
+        placeInfo.append(mapLink);
+      }
+      placeInfo.hidden=false;
+    });
 
     function localDateValue(date){return `${date.getFullYear()}-${String(date.getMonth()+1).padStart(2,'0')}-${String(date.getDate()).padStart(2,'0')}`}
     dateInput.min=localDateValue(new Date());
