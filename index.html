@@ -75,9 +75,16 @@
     .locbtn:disabled { opacity: .62; cursor: wait; }
     .locbtn.is-loading { animation: pulse .8s ease-in-out infinite alternate; }
     @keyframes pulse { to { transform: scale(.93); box-shadow: 0 0 0 5px rgba(184,137,72,.24); } }
-    .place-info { padding: 12px 14px; border: 1px solid #e5d7c1; border-left: 3px solid var(--gold); border-radius: 6px; color: #594833; background: #f8f1e5; font-size: 12px; line-height: 1.6; }
-    .place-info[hidden] { display: none; }
-    .place-info a { display: inline-block; margin-top: 4px; color: #75501f; font-weight: 800; text-underline-offset: 3px; }
+    .place-info { grid-column: 1 / -1; padding: 14px; border: 1px solid rgba(221,193,142,.34); border-radius: 10px; color: #fffaf1; background: radial-gradient(ellipse at 90% 10%, rgba(221,193,142,.14), transparent 37%), linear-gradient(145deg, var(--espresso-soft), var(--espresso)); box-shadow: 0 8px 22px rgba(43,31,18,.1); }
+    .place-info-title { margin: 0 0 10px; color: var(--gold-light); font-size: 10px; font-weight: 850; letter-spacing: .14em; text-transform: uppercase; }
+    .place-info-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin: 0; padding: 0; list-style: none; }
+    .place-info-item { min-width: 0; padding: 10px; border: 1px solid rgba(221,193,142,.24); border-radius: 8px; background: rgba(255,250,241,.055); transition: border-color .18s ease, background .18s ease; }
+    .place-info-item.is-selected { border-color: rgba(221,193,142,.76); background: rgba(255,250,241,.13); }
+    .place-info-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+    .place-info-item strong { color: #fffaf1; font-size: 11px; font-weight: 800; }
+    .place-code { display: inline-flex; min-width: 30px; min-height: 22px; align-items: center; justify-content: center; padding: 0 6px; border: 1px solid rgba(221,193,142,.38); border-radius: 999px; color: var(--gold-light); background: rgba(221,193,142,.08); font-size: 9px; font-weight: 850; letter-spacing: .06em; }
+    .place-info-item p { margin: 0; color: rgba(255,250,241,.76); font-size: 10px; line-height: 1.5; }
+    .place-info-item a { display: inline-block; margin-top: 7px; color: var(--gold-light); font-size: 10px; font-weight: 750; text-underline-offset: 3px; }
     .help { margin: -2px 1px 0; color: var(--muted); font-size: 10px; line-height: 1.5; }
     .location-status, .form-status { display: none; min-height: 38px; padding: 10px 12px; border-radius: 6px; font-size: 11px; line-height: 1.5; contain: layout; }
     .location-status.visible, .form-status.visible { display: block; color: #286343; background: #e8f3e9; }
@@ -98,6 +105,7 @@
       .brand-copy { grid-column: 1 / -1; max-width: none; margin-top: 18px; }
       .note { grid-column: 1 / -1; margin-top: 18px; }
       .social { grid-column: 1 / -1; padding-top: 18px; }
+      .place-info-list { grid-template-columns: 1fr; gap: 7px; }
     }
     @media (max-width: 560px) {
       .container { width: calc(100% - 28px); padding: 14px 0 28px; }
@@ -178,7 +186,25 @@
             <option value="Ke Outlet">Outlet (OT)</option>
             <option value="Rumah">Rumah (RM)</option>
           </select></div>
-          <div class="place-info" id="placeInfo" role="status" aria-live="polite" hidden></div>
+          <section class="place-info" id="placeInfo" aria-labelledby="placeInfoTitle">
+            <h3 class="place-info-title" id="placeInfoTitle">Keterangan tempat layanan</h3>
+            <ul class="place-info-list">
+              <li class="place-info-item" data-place="Homecare">
+                <div class="place-info-top"><strong>Homecare</strong><span class="place-code">HC</span></div>
+                <p>Terapis datang ke rumah customer.</p>
+              </li>
+              <li class="place-info-item" data-place="Ke Outlet">
+                <div class="place-info-top"><strong>Outlet</strong><span class="place-code">OT</span></div>
+                <p>Customer datang ke outlet Rumah Pijat Boyolali.</p>
+                <a href="https://maps.app.goo.gl/aHkwbzasRmdKWS3g7" target="_blank" rel="noopener">Lihat lokasi outlet</a>
+              </li>
+              <li class="place-info-item" data-place="Rumah">
+                <div class="place-info-top"><strong>Rumah</strong><span class="place-code">RM</span></div>
+                <p>Layanan dilakukan di Rumah Pijat Boyolali.</p>
+                <a href="https://maps.app.goo.gl/hcddMLWVSL3LMEJe8" target="_blank" rel="noopener">Lihat lokasi Rumah</a>
+              </li>
+            </ul>
+          </section>
           <div class="field full"><label for="lokasi">Link Google Maps (opsional)</label><div class="location">
             <input id="lokasi" name="lokasi" type="text" placeholder="Link Google Maps (opsional)" autocomplete="url" aria-label="Link lokasi Google Maps">
             <button class="locbtn" id="locationBtn" type="button" aria-label="Ambil lokasi perangkat" title="Ambil lokasi perangkat">📍</button>
@@ -200,29 +226,14 @@
     const locationStatus=document.getElementById('locationStatus');
     const formStatus=document.getElementById('formStatus');
     const placeSelect=document.getElementById('jenis');
-    const placeInfo=document.getElementById('placeInfo');
-
-    const placeDetails={
-      Homecare:{text:'Terapis datang ke rumah customer.'},
-      'Ke Outlet':{text:'Customer datang ke outlet Rumah Pijat Boyolali.',label:'Lihat lokasi outlet',url:'https://maps.app.goo.gl/aHkwbzasRmdKWS3g7'},
-      Rumah:{text:'Layanan dilakukan di Rumah Pijat Boyolali.',label:'Lihat lokasi Rumah',url:'https://maps.app.goo.gl/hcddMLWVSL3LMEJe8'}
-    };
-    placeSelect.addEventListener('change',()=>{
-      const detail=placeDetails[placeSelect.value];
-      placeInfo.replaceChildren();
-      if(!detail){placeInfo.hidden=true;return}
-      placeInfo.append(document.createTextNode(detail.text));
-      if(detail.url){
-        placeInfo.append(document.createElement('br'));
-        const mapLink=document.createElement('a');
-        mapLink.href=detail.url;
-        mapLink.target='_blank';
-        mapLink.rel='noopener';
-        mapLink.textContent=detail.label;
-        placeInfo.append(mapLink);
-      }
-      placeInfo.hidden=false;
-    });
+    const placeOptions=Array.from(document.querySelectorAll('.place-info-item'));
+    function updatePlaceHighlight(){
+      placeOptions.forEach(option=>{
+        option.classList.toggle('is-selected',option.dataset.place===placeSelect.value);
+      });
+    }
+    placeSelect.addEventListener('change',updatePlaceHighlight);
+    updatePlaceHighlight();
 
     function localDateValue(date){return `${date.getFullYear()}-${String(date.getMonth()+1).padStart(2,'0')}-${String(date.getDate()).padStart(2,'0')}`}
     dateInput.min=localDateValue(new Date());
