@@ -3,102 +3,192 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#17100b">
+  <meta name="theme-color" content="#21180f">
   <link rel="preconnect" href="https://rumahpijatboyolali.github.io" crossorigin>
   <link rel="dns-prefetch" href="https://rumahpijatboyolali.github.io">
-  <link rel="preload" as="image" href="https://rumahpijatboyolali.github.io/format-pendaftaran/logo.png" fetchpriority="high">
-  <link rel="icon" type="image/png" href="https://rumahpijatboyolali.github.io/format-pendaftaran/logo.png">
+  <link rel="preload" as="image" href="logo-rumah-pijat-boyolali-transparan.png" fetchpriority="high">
+  <link rel="icon" type="image/png" href="logo-rumah-pijat-boyolali-transparan.png">
   <title>Reservasi Rumah Pijat Boyolali</title>
   <style>
-    :root{color-scheme:light;--brown:#17100b;--gold:#b8893d;--cream:#fff8ed;--ink:#38291c;--line:#ddd8d2;--muted:#8b8177;--green:#25d366}
-    *{box-sizing:border-box}
-    html{min-height:100%;background:var(--brown)}
-    body{margin:0;min-height:100vh;padding:16px;background:var(--brown);font-family:Arial,system-ui,sans-serif;color:var(--ink)}
-    button,.back-link{-webkit-tap-highlight-color:transparent;touch-action:manipulation;transition:transform .14s ease,filter .14s ease,box-shadow .14s ease}
-    button:active,.back-link:active{transform:scale(.97);filter:brightness(.92)}
-    button:focus-visible,.back-link:focus-visible{outline:3px solid #d39a43;outline-offset:3px}
-    .container{width:100%;max-width:480px;margin:0 auto}
-    .back-link{display:inline-flex;align-items:center;gap:7px;margin:0 0 14px;padding:8px 12px;border:1px solid #d8c5a8;border-radius:10px;color:#71522e;background:#fffdf8;text-decoration:none;font-size:13px;font-weight:700}
-    .back-link:hover{background:#f3eadb}
-    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-    .card{padding:20px 16px 22px;background:var(--cream);border-radius:22px;box-shadow:0 10px 30px #0005}
-    .logo{display:block;width:112px;height:112px;object-fit:contain;margin:0 auto 12px}
-    h1{margin:0;text-align:center;color:#9b6b25;font-size:clamp(22px,6vw,28px);line-height:1.2}
-    .tag{margin:12px 0 0;text-align:center;font-size:13px;font-style:italic}
-    .music{width:100%;margin:15px 0 12px;padding:11px;border:0;border-radius:10px;background:var(--gold);color:#fff;font-weight:700;cursor:pointer}
-    form{display:grid;gap:9px}
-    input,textarea,select{width:100%;min-width:0;min-height:44px;padding:11px 12px;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink);font:inherit;font-size:14px}
-    input:focus,textarea:focus,select:focus{outline:2px solid #b8893d55;border-color:var(--gold)}
-    textarea{min-height:76px;resize:vertical}
-    .location{display:flex;gap:7px;align-items:center}
-    .location input{flex:1}
-    .locbtn{display:inline-flex;align-items:center;justify-content:center;flex:0 0 46px;height:44px;border:0;border-radius:10px;background:#9b702c;color:#fff;font-size:20px;cursor:pointer}
-    .locbtn.is-loading{animation:pulse .8s ease-in-out infinite alternate}
-    @keyframes pulse{to{transform:scale(.92);box-shadow:0 0 0 5px #b8893d55}}
-    .place-info{padding:11px 12px;border:1px solid #e6d8c2;border-radius:10px;background:#f7efdf;color:#5e4b35;font-size:12px;line-height:1.55}
-    .place-info[hidden]{display:none}
-    .place-info a{display:inline-block;margin-top:4px;color:#80571f;font-weight:800;text-underline-offset:2px}
-    .help{margin:-3px 2px 2px;color:var(--muted);font-size:11px;line-height:1.4}
-    .location-status,.form-status{display:none;min-height:36px;padding:9px 11px;border-radius:9px;font-size:12px;line-height:1.45;contain:layout}
-    .location-status.visible,.form-status.visible{display:block;background:#e5f5e8;color:#286343}
-    .location-status.error,.form-status.error{display:block;background:#fde8e5;color:#a52e28}
-    .submit{width:100%;min-height:48px;margin-top:2px;border:0;border-radius:11px;background:var(--green);color:#fff;font-size:15px;font-weight:800;cursor:pointer}
-    .submit:disabled{opacity:.65;cursor:wait}
-    .note{margin-top:14px;padding:13px 10px;border-radius:15px;background:#f3d48d;text-align:center;color:#24180d;font-size:13px;line-height:1.55}
-    .note strong{display:block;color:#7b4d00;font-size:24px;line-height:1.2}
-    .social{margin-top:15px;text-align:center;font-size:13px;line-height:1.8}
-    a{color:#9b702c;font-weight:700}
-    @media(prefers-reduced-motion:reduce){button,.back-link{transition:none}.locbtn.is-loading{animation:none}}
-    @media(max-width:360px){body{padding:10px}.card{padding:17px 13px;border-radius:18px}.logo{width:96px;height:96px}}
+    :root {
+      color-scheme: light;
+      --espresso: #21180f;
+      --espresso-soft: #33251a;
+      --cream: #f5eee2;
+      --paper: #fffdf8;
+      --ink: #30251b;
+      --muted: #776c60;
+      --gold: #b88948;
+      --gold-light: #ddc18e;
+      --line: #e7dfd3;
+      --green: #23734e;
+      --serif: Baskerville, "Palatino Linotype", "Book Antiqua", Georgia, serif;
+      --sans: "Aptos", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { min-height: 100%; background: var(--cream); scroll-behavior: smooth; }
+    body { min-width: 320px; min-height: 100vh; margin: 0; color: var(--ink); font-family: var(--sans); -webkit-font-smoothing: antialiased; background: radial-gradient(ellipse at 7% 8%, #fffaf0 0, transparent 38%), var(--cream); }
+    a { color: inherit; }
+    button, input, select, textarea { font: inherit; }
+    button, .back-link { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+    button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px solid #c79853; outline-offset: 3px; }
+    .container { width: min(100% - 56px, 1180px); margin: 0 auto; padding: 30px 0 48px; }
+    .page-top { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-bottom: 20px; }
+    .back-link { display: inline-flex; min-height: 44px; align-items: center; gap: 9px; padding: 0 14px; border: 1px solid #d8cdbd; color: #644c30; background: rgba(255,253,248,.76); text-decoration: none; font-size: 12px; font-weight: 750; transition: border-color .2s ease, background .2s ease, transform .2s ease; }
+    .back-link:hover { transform: translateY(-1px); border-color: var(--gold); background: var(--paper); }
+    .page-caption { margin: 0; color: #8a7453; font-size: 10px; font-weight: 800; letter-spacing: .19em; text-transform: uppercase; }
+    .reservation-layout { display: grid; grid-template-columns: minmax(285px, .78fr) minmax(0, 1.22fr); align-items: stretch; gap: 18px; }
+    .brand-panel, .form-panel { min-width: 0; border-radius: 22px; animation: arrive .72s cubic-bezier(.2,.7,.2,1) both; }
+    .brand-panel { position: relative; display: flex; flex-direction: column; overflow: hidden; padding: 32px; color: #fffaf1; background: radial-gradient(ellipse at 90% 10%, rgba(221,193,142,.14), transparent 37%), linear-gradient(145deg, var(--espresso-soft), var(--espresso)); box-shadow: 0 18px 48px rgba(43,31,18,.12); }
+    .brand-panel::after { position: absolute; right: -106px; bottom: 88px; width: 270px; height: 270px; border: 1px solid rgba(221,193,142,.13); border-radius: 50%; box-shadow: 0 0 0 24px rgba(221,193,142,.025), 0 0 0 50px rgba(221,193,142,.02); content: ""; pointer-events: none; }
+    .brand-mark { display: grid; width: 110px; height: 110px; place-items: center; margin-bottom: 24px; border: 1px solid rgba(221,193,142,.45); border-radius: 50%; background: rgba(255,250,241,.07); }
+    .logo { display: block; width: 90px; height: 90px; object-fit: contain; }
+    .brand-panel h1 { max-width: 320px; margin: 0; color: #fffaf1; font-family: var(--serif); font-size: clamp(31px, 3vw, 42px); font-weight: 400; letter-spacing: -.035em; line-height: 1.1; }
+    .tag { margin: 13px 0 0; color: var(--gold-light); font-family: var(--serif); font-size: 16px; font-style: italic; }
+    .brand-copy { max-width: 350px; margin: 22px 0 0; color: rgba(255,250,241,.68); font-size: 13px; line-height: 1.8; }
+    .note { position: relative; z-index: 1; display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 15px; margin-top: 28px; padding: 16px 0; border-top: 1px solid rgba(221,193,142,.34); border-bottom: 1px solid rgba(221,193,142,.34); color: #fffaf1; font-size: 11px; line-height: 1.6; }
+    .note-price { min-width: 88px; }
+    .note-label { display: block; color: var(--gold-light); font-size: 8px; font-weight: 800; letter-spacing: .17em; text-transform: uppercase; }
+    .note strong { display: block; margin: 3px 0 0; color: #fffaf1; font-family: var(--serif); font-size: 34px; font-weight: 400; letter-spacing: -.035em; line-height: 1; }
+    .note-details { display: grid; gap: 5px; padding-left: 15px; border-left: 1px solid rgba(221,193,142,.34); color: rgba(255,250,241,.76); font-size: 10px; }
+    .social { position: relative; z-index: 1; display: flex; flex-wrap: wrap; gap: 20px; margin-top: auto; padding-top: 27px; font-size: 11px; }
+    .social a { color: rgba(255,250,241,.76); text-underline-offset: 3px; }
+    .social a:hover { color: #fff; }
+    .form-panel { padding: clamp(23px, 4vw, 42px); background: var(--paper); box-shadow: 0 18px 48px rgba(43,31,18,.08); animation-delay: .09s; }
+    .form-heading { margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--line); }
+    .form-kicker { margin: 0 0 8px; color: #97713e; font-size: 9px; font-weight: 850; letter-spacing: .2em; text-transform: uppercase; }
+    .form-heading h2 { margin: 0; color: var(--espresso); font-family: var(--serif); font-size: clamp(27px, 3vw, 36px); font-weight: 400; letter-spacing: -.025em; line-height: 1.15; }
+    .form-heading p:last-child { margin: 9px 0 0; color: var(--muted); font-size: 12px; line-height: 1.6; }
+    form { display: grid; grid-template-columns: 1fr 1fr; gap: 15px 13px; }
+    .field { display: grid; min-width: 0; align-content: start; gap: 7px; }
+    .field.full, .place-info, .form-status, .submit { grid-column: 1 / -1; }
+    .field label { color: #584a3a; font-size: 11px; font-weight: 750; }
+    input, textarea, select { width: 100%; min-width: 0; min-height: 48px; padding: 12px 13px; border: 1px solid #ddd4c8; border-radius: 7px; color: var(--ink); background: #fff; font-size: 13px; transition: border-color .18s ease, box-shadow .18s ease, background .18s ease; }
+    input::placeholder, textarea::placeholder { color: #9a9187; }
+    input:focus, textarea:focus, select:focus { border-color: var(--gold); outline: none; box-shadow: 0 0 0 3px rgba(184,137,72,.13); }
+    select { cursor: pointer; }
+    textarea { min-height: 76px; resize: vertical; }
+    .location { display: flex; gap: 8px; align-items: center; }
+    .location input { flex: 1; }
+    .locbtn { display: inline-flex; flex: 0 0 48px; min-height: 48px; align-items: center; justify-content: center; border: 1px solid #8c6738; border-radius: 7px; color: #fffaf1; background: #8c6738; font-size: 18px; cursor: pointer; transition: background .2s ease, transform .2s ease; }
+    .locbtn:hover { transform: translateY(-1px); background: #72532f; }
+    .locbtn:disabled { opacity: .62; cursor: wait; }
+    .locbtn.is-loading { animation: pulse .8s ease-in-out infinite alternate; }
+    @keyframes pulse { to { transform: scale(.93); box-shadow: 0 0 0 5px rgba(184,137,72,.24); } }
+    .place-info { padding: 12px 14px; border: 1px solid #e5d7c1; border-left: 3px solid var(--gold); border-radius: 6px; color: #594833; background: #f8f1e5; font-size: 12px; line-height: 1.6; }
+    .place-info[hidden] { display: none; }
+    .place-info a { display: inline-block; margin-top: 4px; color: #75501f; font-weight: 800; text-underline-offset: 3px; }
+    .help { margin: -2px 1px 0; color: var(--muted); font-size: 10px; line-height: 1.5; }
+    .location-status, .form-status { display: none; min-height: 38px; padding: 10px 12px; border-radius: 6px; font-size: 11px; line-height: 1.5; contain: layout; }
+    .location-status.visible, .form-status.visible { display: block; color: #286343; background: #e8f3e9; }
+    .location-status.error, .form-status.error { display: block; color: #a52e28; background: #fbeae7; }
+    .submit { min-height: 51px; margin-top: 2px; border: 0; border-radius: 7px; color: #fff; background: var(--green); font-size: 13px; font-weight: 800; cursor: pointer; transition: transform .18s ease, background .18s ease; }
+    .submit:hover { transform: translateY(-1px); background: #1e6343; }
+    .submit:disabled { opacity: .65; cursor: wait; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+    @keyframes arrive { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 900px) {
+      .container { width: min(100% - 40px, 680px); padding-top: 22px; }
+      .reservation-layout { grid-template-columns: 1fr; gap: 14px; }
+      .brand-panel { display: grid; grid-template-columns: 84px 1fr; column-gap: 18px; padding: 24px; }
+      .brand-mark { grid-row: span 3; width: 84px; height: 84px; margin: 0; }
+      .logo { width: 70px; height: 70px; }
+      .brand-panel h1 { align-self: end; font-size: 31px; }
+      .tag { margin-top: 6px; font-size: 14px; }
+      .brand-copy { grid-column: 1 / -1; max-width: none; margin-top: 18px; }
+      .note { grid-column: 1 / -1; margin-top: 18px; }
+      .social { grid-column: 1 / -1; padding-top: 18px; }
+    }
+    @media (max-width: 560px) {
+      .container { width: calc(100% - 28px); padding: 14px 0 28px; }
+      .page-top { margin-bottom: 12px; }
+      .page-caption { font-size: 8px; letter-spacing: .14em; }
+      .back-link { min-height: 44px; padding: 0 11px; }
+      .brand-panel, .form-panel { border-radius: 15px; }
+      .brand-panel { grid-template-columns: 62px 1fr; gap: 0 13px; padding: 19px; }
+      .brand-mark { width: 62px; height: 62px; }
+      .logo { width: 54px; height: 54px; }
+      .brand-panel h1 { font-size: clamp(22px, 7vw, 30px); }
+      .tag { margin-top: 5px; font-size: 12px; }
+      .brand-copy { margin-top: 14px; font-size: 12px; }
+      .note { grid-template-columns: auto 1fr; gap: 12px; margin-top: 14px; padding: 13px 0; }
+      .note-price { min-width: 79px; }
+      .note strong { font-size: 31px; }
+      .note-details { padding-left: 11px; font-size: 9px; }
+      .social { gap: 18px; padding-top: 14px; }
+      .form-panel { padding: 21px 17px 20px; }
+      .form-heading { margin-bottom: 18px; padding-bottom: 16px; }
+      form { grid-template-columns: 1fr; gap: 13px; }
+      .field.full, .place-info, .form-status, .submit { grid-column: auto; }
+      .field label { font-size: 11px; }
+      input, textarea, select { min-height: 48px; font-size: 16px; }
+      textarea { min-height: 78px; }
+      .help { font-size: 10px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    }
   </style>
 </head>
 <body>
   <main class="container">
-    <section class="card" aria-labelledby="brandTitle">
+    <header class="page-top">
       <a class="back-link" href="https://rumahpijatboyolali.github.io/format-pendaftaran/landing-rumah-pijat-boyolali.html" aria-label="Kembali ke halaman landing"><span aria-hidden="true">←</span> Kembali</a>
-      <img class="logo" src="https://rumahpijatboyolali.github.io/format-pendaftaran/logo.png" alt="Logo Rumah Pijat Boyolali" width="112" height="112" fetchpriority="high" decoding="async">
-      <h1 id="brandTitle">Rumah Pijat Boyolali</h1>
-      <p class="tag">"Relax, Healthy and Happy"</p>
-
-      <button class="music" id="musicBtn" type="button">🎵 Putar Suasana Relax</button>
-      <audio id="music" loop preload="none"><source src="https://rumahpijatboyolali.github.io/format-pendaftaran/rpb1.mp3" type="audio/mpeg"></audio>
-
-      <form id="reservationForm" action="https://script.google.com/macros/s/AKfycbwk9OOgouAIw1scYBqg3sDHWeoKdHY1t8GBSJER1zl10eJlVQrFQk-CW9iKUCl4GuDAeg/exec" method="post" target="_top">
-        <input id="nama" name="nama" type="text" placeholder="Nama *" autocomplete="name" maxlength="120" required>
-        <input id="usia" name="usia" type="number" placeholder="Usia *" min="1" max="120" required>
-        <textarea id="alamat" name="alamat" placeholder="Alamat *" autocomplete="street-address" required></textarea>
-        <select id="treatment" name="treatment" required>
-          <option value="">Pilih Treatment *</option>
-          <option value="Pijat Capek">Pijat Capek</option>
-          <option value="Pijat Keluhan">Pijat Keluhan</option>
-        </select>
-        <label class="sr-only" for="tanggal">Tanggal reservasi</label>
-        <input id="tanggal" name="tanggal" type="date" required>
-        <select id="jam" name="jam" required aria-label="Pilih jam reservasi">
-          <option value="">Pilih Jam *</option>
-        </select>
-        <input id="instagram" name="instagram" type="text" placeholder="Tahu pijat dari mana? *" required>
-        <select id="jenis" name="jenis" required>
-          <option value="">Pilih tempat layanan *</option>
-          <option value="Homecare">Homecare (HC)</option>
-          <option value="Ke Outlet">Outlet (OT)</option>
-          <option value="Rumah">Rumah (RM)</option>
-        </select>
-        <div class="place-info" id="placeInfo" role="status" aria-live="polite" hidden></div>
-        <div class="location">
-          <input id="lokasi" name="lokasi" type="text" placeholder="Link Google Maps (opsional)" autocomplete="url" aria-label="Link lokasi Google Maps">
-          <button class="locbtn" id="locationBtn" type="button" aria-label="Ambil lokasi perangkat" title="Ambil lokasi perangkat">📍</button>
-        </div>
-        <small class="help">Tekan 📍 dan izinkan akses lokasi. Tautan Maps akan muncul di kolom ini.</small>
-        <div class="location-status" id="locationStatus" role="status" aria-live="polite"></div>
-        <input id="wa" name="wa" type="tel" placeholder="No WhatsApp *" autocomplete="tel" required>
-        <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
-        <button class="submit" id="submitBtn" type="submit">💬 Kirim Pendaftaran</button>
-      </form>
-
-      <aside class="note">✨ PROMO PIJAT ✨<strong>100K</strong>⏱ Durasi ± 2 Jam<br>Belom Termasuk Ongkir Kalo Jauh</aside>
-      <div class="social">📸 <a href="https://www.instagram.com/rumahpijatboyolali" target="_blank" rel="noopener">Instagram</a><br><br>🎵 <a href="https://www.tiktok.com/@rumahpijatboyolali" target="_blank" rel="noopener">TikTok</a></div>
-    </section>
+      <p class="page-caption">Reservasi Rumah Pijat Boyolali</p>
+    </header>
+    <div class="reservation-layout">
+      <aside class="brand-panel" aria-labelledby="brandTitle">
+        <div class="brand-mark"><img class="logo" src="logo-rumah-pijat-boyolali-transparan.png" alt="Logo Rumah Pijat Boyolali" width="90" height="90" fetchpriority="high" decoding="async"></div>
+        <h1 id="brandTitle">Rumah Pijat Boyolali</h1>
+        <p class="tag">"Relax, Healthy and Happy"</p>
+        <p class="brand-copy">Setiap cerita dan kebutuhan Anda kami hargai, dan kami siap menyambut Anda dengan perhatian serta pelayanan yang hangat.</p>
+        <aside class="note" aria-label="Promo pijat">
+          <div class="note-price"><span class="note-label">Promo Pijat</span><strong>100K</strong></div>
+          <div class="note-details"><span>⏱ Durasi ± 2 Jam</span><span>Belom Termasuk Ongkir Kalo Jauh</span></div>
+        </aside>
+        <nav class="social" aria-label="Media sosial">
+          <a href="https://www.instagram.com/rumahpijatboyolali" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://www.tiktok.com/@rumahpijatboyolali" target="_blank" rel="noopener">TikTok</a>
+        </nav>
+      </aside>
+      <section class="form-panel" aria-labelledby="formTitle">
+        <header class="form-heading">
+          <p class="form-kicker">Form Reservasi</p>
+          <h2 id="formTitle">Informasi reservasi</h2>
+          <p>Isi data diri dan pilih layanan yang sesuai dengan kebutuhan Anda.</p>
+        </header>
+        <form id="reservationForm" action="https://script.google.com/macros/s/AKfycbwk9OOgouAIw1scYBqg3sDHWeoKdHY1t8GBSJER1zl10eJlVQrFQk-CW9iKUCl4GuDAeg/exec" method="post" target="_top">
+          <div class="field"><label for="nama">Nama *</label><input id="nama" name="nama" type="text" placeholder="Nama *" autocomplete="name" maxlength="120" required></div>
+          <div class="field"><label for="usia">Usia *</label><input id="usia" name="usia" type="number" placeholder="Usia *" min="1" max="120" required></div>
+          <div class="field full"><label for="alamat">Alamat *</label><textarea id="alamat" name="alamat" placeholder="Alamat *" autocomplete="street-address" required></textarea></div>
+          <div class="field full"><label for="treatment">Treatment *</label><select id="treatment" name="treatment" required>
+            <option value="">Pilih Treatment *</option>
+            <option value="Pijat Capek">Pijat Capek</option>
+            <option value="Pijat Keluhan">Pijat Keluhan</option>
+          </select></div>
+          <div class="field"><label for="tanggal">Tanggal reservasi *</label><input id="tanggal" name="tanggal" type="date" required></div>
+          <div class="field"><label for="jam">Jam reservasi *</label><select id="jam" name="jam" required aria-label="Pilih jam reservasi">
+            <option value="">Pilih Jam *</option>
+          </select></div>
+          <div class="field full"><label for="instagram">Tahu pijat dari mana? *</label><input id="instagram" name="instagram" type="text" placeholder="Tahu pijat dari mana? *" required></div>
+          <div class="field full"><label for="jenis">Pilih tempat layanan *</label><select id="jenis" name="jenis" required>
+            <option value="">Pilih tempat layanan *</option>
+            <option value="Homecare">Homecare (HC)</option>
+            <option value="Ke Outlet">Outlet (OT)</option>
+            <option value="Rumah">Rumah (RM)</option>
+          </select></div>
+          <div class="place-info" id="placeInfo" role="status" aria-live="polite" hidden></div>
+          <div class="field full"><label for="lokasi">Link Google Maps (opsional)</label><div class="location">
+            <input id="lokasi" name="lokasi" type="text" placeholder="Link Google Maps (opsional)" autocomplete="url" aria-label="Link lokasi Google Maps">
+            <button class="locbtn" id="locationBtn" type="button" aria-label="Ambil lokasi perangkat" title="Ambil lokasi perangkat">📍</button>
+          </div><small class="help">Tekan 📍 dan izinkan akses lokasi. Tautan Maps akan muncul di kolom ini.</small><div class="location-status" id="locationStatus" role="status" aria-live="polite"></div></div>
+          <div class="field full"><label for="wa">No WhatsApp *</label><input id="wa" name="wa" type="tel" placeholder="No WhatsApp *" autocomplete="tel" required></div>
+          <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
+          <button class="submit" id="submitBtn" type="submit">💬 Kirim Pendaftaran</button>
+        </form>
+      </section>
+    </div>
   </main>
   <script>
     document.addEventListener('input',e=>{const el=e.target;if(!el.matches('input[type="text"],textarea')||e.isComposing)return;const a=el.selectionStart,b=el.selectionEnd;const v=el.value.replace(/(^|\s)(\S)/g,(m,s,l)=>s+l.toUpperCase());if(v!==el.value){el.value=v;try{el.setSelectionRange(a,b)}catch(_){}}});
@@ -149,12 +239,6 @@
       timeFrag.appendChild(option);
     }
     timeSelect.appendChild(timeFrag);
-
-    document.getElementById('musicBtn').addEventListener('click',async function(){
-      const audio=document.getElementById('music');
-      if(audio.paused){try{await audio.play();this.textContent='🔇 Matikan Musik'}catch(_){showFormStatus('Musik belum bisa diputar. Coba tekan tombol sekali lagi.','error')}}
-      else{audio.pause();this.textContent='🎵 Putar Suasana Relax'}
-    });
 
     function showFormStatus(message,type){formStatus.textContent=message;formStatus.className=`form-status visible ${type}`}
 
