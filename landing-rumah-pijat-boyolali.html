@@ -1,263 +1,163 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#201710">
-  <meta name="description" content="Rumah Pijat Boyolali — Relax, Healthy and Happy. Pijat Capek dan Pijat Keluhan dengan reservasi mudah.">
+  <meta name="theme-color" content="#21160f">
   <link rel="icon" type="image/png" href="https://rumahpijatboyolali.github.io/format-pendaftaran/logo.png">
-  <link rel="preconnect" href="https://rumahpijatboyolali.github.io" crossorigin>
-  <title>Rumah Pijat Boyolali — Relax, Healthy and Happy</title>
+  <meta name="description" content="Rumah Pijat Boyolali — Relax, Healthy and Happy.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Rumah Pijat Boyolali">
+  <meta property="og:description" content="Relax, Healthy and Happy.">
+  <meta property="og:url" content="https://rumahpijatboyolali.github.io/format-pendaftaran/landing-rumah-pijat-boyolali.html">
+  <meta property="og:image" content="https://rumahpijatboyolali.github.io/format-pendaftaran/logo.png">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Rumah Pijat Boyolali">
+  <meta name="twitter:description" content="Relax, Healthy and Happy.">
+  <title>Rumah Pijat Boyolali</title>
   <style>
-    :root {
-      color-scheme: light;
-      --night: #201710;
-      --night-soft: #302318;
-      --cream: #f8f1e6;
-      --paper: #fffaf1;
-      --ink: #30251b;
-      --muted: #75685a;
-      --gold: #b88948;
-      --gold-pale: #e4c995;
-      --line: #e4d8c7;
-      --green: #28714f;
-      --serif: Georgia, "Times New Roman", serif;
-      --sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    :root{
+      color-scheme:light;
+      --espresso:#21160f;
+      --espresso-soft:#302116;
+      --cream:#fffaf2;
+      --cream-deep:#f5ebdc;
+      --gold:#b8893d;
+      --gold-light:#d6b77c;
+      --ink:#33251b;
+      --muted:#786b5d;
+      --line:#e5d9c8;
     }
-    *, *::before, *::after { box-sizing: border-box; }
-    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
-    body { margin: 0; color: var(--ink); background: var(--paper); font-family: var(--sans); -webkit-font-smoothing: antialiased; }
-    a { color: inherit; }
-    button, a { -webkit-tap-highlight-color: transparent; }
-    a:focus-visible { outline: 3px solid var(--gold); outline-offset: 4px; }
-    .skip { position: absolute; z-index: 20; top: 8px; left: 8px; padding: 12px 16px; transform: translateY(-150%); background: var(--paper); color: var(--ink); }
-    .skip:focus { transform: translateY(0); }
-    .topbar { position: absolute; z-index: 5; inset: 0 0 auto; display: flex; align-items: center; justify-content: space-between; width: min(100% - 64px, 1240px); height: 88px; margin-inline: auto; color: #fff9ef; }
-    .brand { display: inline-flex; align-items: center; gap: 12px; color: inherit; text-decoration: none; }
-    .brand img { width: 46px; height: 46px; border-radius: 50%; object-fit: contain; background: var(--paper); }
-    .brand strong { display: block; font-size: 13px; letter-spacing: .035em; }
-    .brand small { display: block; margin-top: 4px; color: var(--gold-pale); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; }
-    .nav { display: flex; align-items: center; gap: 30px; }
-    .nav a { color: rgba(255,249,239,.78); text-decoration: none; font-size: 12px; font-weight: 650; transition: color .2s ease; }
-    .nav a:hover { color: #fff; }
-    .nav .nav-cta { padding: 12px 17px; border: 1px solid rgba(228,201,149,.55); color: #fff9ef; }
-    .hero { position: relative; display: grid; min-height: 710px; align-items: center; overflow: hidden; padding: 120px 32px 84px; color: #fff9ef; background: var(--night); }
-    .hero::before { position: absolute; inset: 0; content: ""; background: radial-gradient(ellipse at 72% 50%, rgba(184,137,72,.18), transparent 32%), linear-gradient(110deg, #201710 15%, #2c2016 67%, #21180f); }
-    .hero-inner { position: relative; display: grid; grid-template-columns: 1.02fr .98fr; align-items: center; gap: 56px; width: min(100%, 1180px); margin: 0 auto; }
-    .hero-copy { max-width: 600px; padding-top: 22px; animation: enter .85s .08s both cubic-bezier(.2,.7,.2,1); }
-    .est { margin: 0 0 24px; color: var(--gold-pale); font-size: 11px; font-weight: 700; letter-spacing: .23em; text-transform: uppercase; }
-    h1, h2, h3, p { margin-top: 0; }
-    h1 { max-width: 620px; margin-bottom: 22px; font-family: var(--serif); font-size: clamp(48px, 6.1vw, 79px); font-weight: 400; letter-spacing: -.055em; line-height: .99; }
-    h1 em { color: var(--gold-pale); font-weight: 400; }
-    .hero-text { max-width: 480px; margin-bottom: 30px; color: rgba(255,249,239,.72); font-size: 16px; line-height: 1.85; }
-    .actions { display: flex; flex-wrap: wrap; gap: 12px; }
-    .button { display: inline-flex; min-height: 50px; align-items: center; justify-content: center; gap: 10px; padding: 0 20px; border: 1px solid transparent; text-decoration: none; font-size: 12px; font-weight: 750; transition: transform .2s ease, background .2s ease, border-color .2s ease; }
-    .button:hover { transform: translateY(-2px); }
-    .button-primary { background: var(--gold); color: #201710; }
-    .button-primary:hover { background: #d1aa69; }
-    .button-quiet { border-color: rgba(255,249,239,.28); color: #fff9ef; }
-    .button-quiet:hover { border-color: var(--gold-pale); }
-    .button-schedule { border-color: rgba(228,201,149,.56); color: var(--gold-pale); background: rgba(32,23,16,.12); }
-    .button-schedule:hover { border-color: var(--gold-pale); color: #fff9ef; background: rgba(255,249,239,.07); }
-    .hero-art { position: relative; display: grid; min-height: 440px; place-items: center; animation: enter .95s .2s both cubic-bezier(.2,.7,.2,1); }
-    .halo { position: absolute; width: min(38vw, 420px); aspect-ratio: 1; border: 1px solid rgba(228,201,149,.3); border-radius: 50%; }
-    .halo::before, .halo::after { position: absolute; inset: 7%; border: 1px solid rgba(228,201,149,.16); border-radius: 50%; content: ""; }
-    .halo::after { inset: 17%; }
-    .seal { position: relative; display: grid; width: min(25vw, 276px); aspect-ratio: 1; place-items: center; border: 1px solid rgba(228,201,149,.72); border-radius: 50%; background: radial-gradient(circle, rgba(184,137,72,.19), rgba(32,23,16,.2) 68%); box-shadow: 0 0 0 16px rgba(228,201,149,.035), 0 0 0 34px rgba(228,201,149,.025); animation: breathe 6s ease-in-out infinite; }
-    .seal img { width: 58%; height: 58%; object-fit: contain; filter: drop-shadow(0 12px 20px rgba(0,0,0,.24)); }
-    .seal-note { position: absolute; right: -16px; bottom: 26px; display: grid; width: 134px; height: 134px; place-content: center; border: 1px solid rgba(228,201,149,.45); border-radius: 50%; background: var(--cream); color: var(--night); text-align: center; transform: rotate(7deg); }
-    .seal-note strong { font-family: var(--serif); font-size: 23px; font-weight: 400; }
-    .seal-note span { margin-top: 5px; font-size: 9px; font-weight: 750; letter-spacing: .12em; text-transform: uppercase; }
-    .hero-bottom { position: absolute; right: 32px; bottom: 25px; left: 32px; display: flex; justify-content: center; color: rgba(255,249,239,.48); font-size: 10px; letter-spacing: .18em; text-transform: uppercase; }
-    .intro { display: grid; grid-template-columns: .72fr 1.28fr; gap: 60px; width: min(100% - 64px, 1060px); margin: 0 auto; padding: 116px 0 108px; }
-    .section-label { margin: 8px 0 0; color: #98703d; font-size: 10px; font-weight: 800; letter-spacing: .2em; text-transform: uppercase; }
-    .intro h2, .services h2, .offer h2, .closing h2 { font-family: var(--serif); font-size: clamp(36px, 4.3vw, 55px); font-weight: 400; letter-spacing: -.04em; line-height: 1.08; }
-    .intro h2 { max-width: 320px; margin-bottom: 0; }
-    .intro-copy { align-self: center; max-width: 620px; }
-    .intro-copy p { margin-bottom: 18px; color: var(--muted); font-size: 15px; line-height: 1.9; }
-    .intro-copy .signature { margin: 24px 0 0; color: #725637; font-family: var(--serif); font-size: 18px; font-style: italic; }
-    .services { padding: 94px 32px 108px; background: var(--cream); }
-    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 32px; width: min(100%, 1060px); margin: 0 auto 44px; }
-    .section-head h2 { margin: 14px 0 0; }
-    .section-head > p { max-width: 340px; margin: 0 0 4px; color: var(--muted); font-size: 13px; line-height: 1.8; }
-    .service-list { display: grid; grid-template-columns: 1fr 1fr; width: min(100%, 1060px); margin: 0 auto; border-top: 1px solid #d9cbb8; }
-    .service { display: flex; min-height: 138px; align-items: center; gap: 24px; padding: 26px 28px 26px 0; border-bottom: 1px solid #d9cbb8; }
-    .service:nth-child(odd) { margin-right: 28px; }
-    .service:nth-child(even) { padding-left: 28px; border-left: 1px solid #d9cbb8; }
-    .service-no { color: var(--gold); font-family: var(--serif); font-size: 16px; }
-    .service h3 { margin: 0 0 6px; font-family: var(--serif); font-size: 25px; font-weight: 400; }
-    .service p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.6; }
-    .offer { position: relative; overflow: hidden; padding: 100px 32px; color: #fff9ef; background: var(--night-soft); }
-    .offer::after { position: absolute; top: -230px; right: -90px; width: 560px; aspect-ratio: 1; border: 1px solid rgba(228,201,149,.15); border-radius: 50%; box-shadow: 0 0 0 35px rgba(228,201,149,.025), 0 0 0 75px rgba(228,201,149,.025); content: ""; }
-    .offer-inner { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr .8fr; align-items: center; gap: 70px; width: min(100%, 1000px); margin: 0 auto; }
-    .offer .section-label { color: var(--gold-pale); }
-    .offer h2 { max-width: 530px; margin: 18px 0 0; }
-    .price-card { padding: 30px 34px; border: 1px solid rgba(228,201,149,.42); background: rgba(255,255,255,.035); }
-    .price-card small { color: var(--gold-pale); font-size: 10px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
-    .price { margin: 12px 0 8px; font-family: var(--serif); font-size: 67px; line-height: 1; }
-    .price-card p { margin: 0; color: rgba(255,249,239,.7); font-size: 12px; line-height: 1.8; }
-    .price-card .fine-print { margin-top: 16px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,.15); color: rgba(255,249,239,.55); font-size: 11px; }
-    .closing { padding: 100px 32px 88px; text-align: center; }
-    .closing .section-label { margin-bottom: 18px; }
-    .closing h2 { max-width: 690px; margin: 0 auto 20px; }
-    .closing > p:not(.section-label) { max-width: 520px; margin: 0 auto 28px; color: var(--muted); font-size: 14px; line-height: 1.8; }
-    .closing .button-primary { background: var(--night); color: var(--paper); }
-    .closing .button-primary:hover { background: #49331f; }
-    footer { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 23px max(32px, calc((100vw - 1180px)/2)); color: rgba(255,249,239,.65); background: var(--night); font-size: 11px; }
-    .footer-social { display: flex; gap: 22px; }
-    .footer-social a { color: inherit; text-decoration: none; }
-    .footer-social a:hover { color: #fff; }
-    html.motion-ready [data-reveal] { opacity: 0; transform: translateY(22px); transition: opacity .75s ease, transform .75s cubic-bezier(.2,.7,.2,1); }
-    html.motion-ready [data-reveal].is-visible { opacity: 1; transform: translateY(0); }
-    @keyframes enter { from { opacity: 0; transform: translateY(20px); filter: blur(5px); } to { opacity: 1; transform: translateY(0); filter: blur(0); } }
-    @keyframes breathe { 0%,100% { transform: scale(1); } 50% { transform: scale(1.025); } }
-    @media (max-width: 760px) {
-      html { scroll-padding-top: 24px; }
-      .topbar { position: relative; width: 100%; height: 72px; padding: 0 20px; background: var(--night); }
-      .brand img { width: 40px; height: 40px; }
-      .nav { gap: 0; }
-      .nav a:not(.nav-cta) { display: none; }
-      .nav .nav-cta { min-height: 44px; padding: 0 13px; }
-      .hero { min-height: 0; padding: 59px 22px 60px; }
-      .hero-inner { grid-template-columns: 1fr; gap: 18px; }
-      .hero-copy { padding-top: 0; }
-      .est { margin-bottom: 19px; font-size: 10px; }
-      h1 { max-width: 520px; font-size: clamp(46px, 12vw, 68px); }
-      .hero-text { font-size: 14px; }
-      .hero-art { min-height: 295px; margin-top: 2px; }
-      .halo { width: min(70vw, 320px); }
-      .seal { width: min(46vw, 205px); }
-      .seal-note { right: max(calc((100vw - 310px)/2), 4%); bottom: 9px; width: 104px; height: 104px; }
-      .seal-note strong { font-size: 20px; }
-      .hero-bottom { bottom: 19px; font-size: 9px; }
-      .intro { grid-template-columns: 1fr; gap: 22px; width: calc(100% - 44px); padding: 75px 0; }
-      .intro h2 { max-width: 500px; }
-      .services { padding: 73px 22px 80px; }
-      .section-head { display: block; margin-bottom: 30px; }
-      .section-head > p { margin-top: 12px; }
-      .service-list { grid-template-columns: 1fr; }
-      .service { min-height: 112px; padding: 22px 0; }
-      .service:nth-child(odd) { margin-right: 0; }
-      .service:nth-child(even) { padding-left: 0; border-left: 0; }
-      .offer { padding: 73px 22px; }
-      .offer-inner { grid-template-columns: 1fr; gap: 30px; }
-      .price-card { max-width: 430px; padding: 24px; }
-      .price { font-size: 59px; }
-      .closing { padding: 73px 22px 65px; }
-      footer { flex-direction: column; padding: 22px; text-align: center; }
+    *{box-sizing:border-box}
+    html{min-height:100%;background:var(--espresso);scroll-behavior:smooth}
+    body{
+      min-height:100vh;
+      margin:0;
+      padding:clamp(16px,4vw,42px);
+      display:grid;
+      place-items:center;
+      color:var(--ink);
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      background:
+        radial-gradient(ellipse at 15% 12%,rgba(184,137,61,.15),transparent 34%),
+        radial-gradient(ellipse at 88% 88%,rgba(184,137,61,.12),transparent 32%),
+        var(--espresso);
     }
-    @media (max-width: 380px) {
-      .topbar { padding-inline: 14px; }
-      .brand { gap: 8px; }
-      .brand strong { font-size: 11px; }
-      .brand small { font-size: 9px; }
-      .nav .nav-cta { padding-inline: 10px; font-size: 11px; }
-      .actions { display: grid; grid-template-columns: 1fr; }
-      .button { width: 100%; }
+    a{color:inherit}
+    .page{width:min(100%,1000px);animation:arrive .7s ease both}
+    .brand{display:flex;align-items:center;justify-content:center;gap:12px;margin:0 auto 22px;color:#fff7ea;animation:soft-rise .65s .08s cubic-bezier(.2,.7,.2,1) both}
+    .brand img{width:48px;height:48px;object-fit:contain;border-radius:50%;background:var(--cream);padding:3px}
+    .brand-name{font-size:13px;font-weight:750;letter-spacing:.12em;text-transform:uppercase}
+    .brand-place{display:block;margin-top:4px;color:var(--gold-light);font-size:10px;font-weight:550;letter-spacing:.2em}
+    .card{
+      position:relative;
+      overflow:hidden;
+      padding:clamp(34px,7vw,76px) clamp(22px,7vw,88px) clamp(28px,5vw,54px);
+      border:1px solid rgba(214,183,124,.66);
+      border-radius:clamp(22px,3vw,32px);
+      background:
+        radial-gradient(circle at 50% 0,rgba(214,183,124,.15),transparent 28%),
+        var(--cream);
+      box-shadow:0 28px 80px rgba(0,0,0,.28),inset 0 0 0 8px rgba(255,255,255,.52);
+      text-align:center;
+      animation:card-arrive .9s .12s cubic-bezier(.2,.7,.2,1) both;
     }
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
-      html.motion-ready [data-reveal] { opacity: 1; transform: none; }
+    .card:before,.card:after{position:absolute;content:"";pointer-events:none;border:1px solid rgba(184,137,61,.2);border-radius:50%}
+    .card:before{width:390px;height:390px;right:-235px;top:-235px}
+    .card:after{width:280px;height:280px;left:-205px;bottom:-205px}
+    .ornament{display:grid;place-items:center;width:58px;height:58px;margin:0 auto 20px;border:1px solid var(--gold-light);border-radius:50%;color:var(--gold);background:#fffdf8;box-shadow:0 0 0 7px rgba(184,137,61,.08);animation:seal-arrive .8s .38s cubic-bezier(.2,.7,.2,1) both}
+    .ornament svg{width:26px;height:26px}
+    .eyebrow{margin:0 0 17px;color:#987034;font-size:11px;font-weight:800;letter-spacing:.25em;text-transform:uppercase;animation:soft-rise .65s .48s ease both}
+    h1{max-width:780px;margin:0 auto;color:var(--espresso);font-family:Georgia,"Times New Roman",serif;font-size:clamp(34px,7vw,66px);font-weight:500;letter-spacing:-.045em;line-height:1.12;animation:soft-rise .8s .58s cubic-bezier(.2,.7,.2,1) both}
+    h1 em{color:#9c702f;font-style:normal}
+    .rule{display:flex;align-items:center;justify-content:center;gap:11px;margin:27px auto 22px;color:var(--gold);animation:soft-rise .6s 1.02s ease both}
+    .rule:before,.rule:after{width:min(16vw,86px);height:1px;content:"";background:var(--line);transform:scaleX(0);animation:line-open .65s 1.08s ease-out both}
+    .rule:before{transform-origin:right}.rule:after{transform-origin:left}
+    .rule span{font-size:12px;animation:star-glow 2.8s 1.55s ease-in-out infinite}
+    .message{max-width:570px;margin:0 auto;color:var(--muted);font-size:clamp(14px,2vw,17px);line-height:1.8;animation:soft-rise .7s 1.12s ease both}
+    .signature{margin:22px auto 0;color:#70583c;font-family:Georgia,"Times New Roman",serif;font-size:16px;font-style:italic;animation:soft-rise .7s 1.25s ease both}
+    .actions{display:flex;justify-content:center;flex-wrap:wrap;gap:11px;margin-top:34px;animation:soft-rise .7s 1.38s ease both}
+    .button{min-height:48px;display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:0 21px;border:1px solid transparent;border-radius:12px;text-decoration:none;font-size:13px;font-weight:750;transition:transform .18s ease,box-shadow .18s ease,background .18s ease}
+    .button:hover{transform:translateY(-2px)}
+    .button:focus-visible{outline:3px solid var(--gold-light);outline-offset:3px}
+    .button-primary{color:#fffaf2;background:var(--espresso);box-shadow:0 8px 20px rgba(33,22,15,.16)}
+    .button-primary:hover{background:#422d1c;box-shadow:0 12px 25px rgba(33,22,15,.2)}
+    .button-secondary{border-color:var(--line);color:#62472a;background:rgba(255,255,255,.62)}
+    .button-secondary:hover{border-color:var(--gold-light);background:white}
+    .button svg{width:17px;height:17px;flex:none}
+    .footer{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:22px 5px 0;color:rgba(255,247,234,.66);font-size:11px;animation:soft-rise .65s 1.52s ease both}
+    .social{display:flex;gap:16px}
+    .social a{text-decoration:none}
+    .social a:hover{color:var(--gold-light)}
+    .login-icon{position:fixed;top:18px;right:18px;z-index:2;display:grid;place-items:center;width:42px;height:42px;border:1px solid rgba(214,183,124,.55);border-radius:50%;color:var(--gold-light);background:rgba(33,22,15,.72);text-decoration:none;transition:background .18s ease,transform .18s ease}
+    .login-icon:hover{background:#422d1c;transform:translateY(-2px)}
+    .login-icon:focus-visible{outline:3px solid var(--gold-light);outline-offset:3px}
+    .login-icon svg{width:20px;height:20px}
+    @keyframes arrive{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes soft-rise{from{opacity:0;transform:translateY(13px);filter:blur(3px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}
+    @keyframes card-arrive{from{opacity:0;transform:translateY(14px) scale(.988)}to{opacity:1;transform:translateY(0) scale(1)}}
+    @keyframes seal-arrive{from{opacity:0;transform:translateY(8px) scale(.82) rotate(-8deg)}to{opacity:1;transform:translateY(0) scale(1) rotate(0)}}
+    @keyframes line-open{to{transform:scaleX(1)}}
+    @keyframes star-glow{0%,100%{opacity:.72;transform:scale(1)}50%{opacity:1;transform:scale(1.13)}}
+    @media(max-width:560px){
+      body{padding:16px}
+      .brand{margin-bottom:17px}
+      .card{padding:38px 22px 30px;border-radius:23px;box-shadow:0 16px 45px rgba(0,0,0,.25),inset 0 0 0 5px rgba(255,255,255,.52)}
+      .ornament{width:52px;height:52px;margin-bottom:18px}
+      .eyebrow{font-size:10px;letter-spacing:.2em}
+      .actions{display:grid;grid-template-columns:1fr;margin-top:28px}
+      .button{width:100%}
+      .footer{flex-direction:column;justify-content:center;margin-top:18px;text-align:center}
+    }
+    @media(prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      .page,.brand,.card,.ornament,.eyebrow,h1,.rule,.rule:before,.rule:after,.rule span,.message,.signature,.actions,.footer{animation:none!important;opacity:1!important;transform:none!important;filter:none!important}
+      .button{transition:none}.button:hover{transform:none}
     }
   </style>
 </head>
 <body>
-  <a class="skip" href="#main">Lewati ke isi</a>
-  <header class="topbar">
-    <a class="brand" href="#atas" aria-label="Rumah Pijat Boyolali, beranda">
-      <img src="logo-rumah-pijat-boyolali-transparan.png" alt="" width="46" height="46">
-      <span><strong>Rumah Pijat Boyolali</strong><small>Est. 2024</small></span>
-    </a>
-    <nav class="nav" aria-label="Navigasi utama">
-      <a href="#layanan">Layanan</a>
-      <a href="#promo">Promo</a>
-      <a class="nav-cta" href="https://rumahpijatboyolali.github.io/format-pendaftaran/">Buat Reservasi</a>
-    </nav>
-  </header>
-  <main id="main">
-    <section class="hero" id="atas" aria-labelledby="hero-title">
-      <div class="hero-inner">
-        <div class="hero-copy">
-          <p class="est">Relax, Healthy and Happy</p>
-          <h1 id="hero-title">Waktu untuk merasa <em>lebih baik.</em></h1>
-          <p class="hero-text">Setiap cerita dan kebutuhan Anda kami hargai. Kami siap menyambut Anda dengan perhatian serta pelayanan yang hangat.</p>
-          <div class="actions">
-            <a class="button button-primary" href="https://rumahpijatboyolali.github.io/format-pendaftaran/">Buat Reservasi</a>
-            <a class="button button-schedule" href="jadwal-pijat.html">Lihat Jadwal</a>
-            <a class="button button-quiet" href="https://wa.me/6285134481399" target="_blank" rel="noopener">Hubungi WhatsApp</a>
-          </div>
-        </div>
-        <div class="hero-art" aria-hidden="true">
-          <div class="halo"></div>
-          <div class="seal"><img src="logo-rumah-pijat-boyolali-transparan.png" alt="" width="160" height="160"></div>
-          <div class="seal-note"><strong>100K</strong><span>Promo Pijat</span></div>
-        </div>
+  <a class="login-icon" href="https://script.google.com/macros/s/AKfycbwk9OOgouAIw1scYBqg3sDHWeoKdHY1t8GBSJER1zl10eJlVQrFQk-CW9iKUCl4GuDAeg/exec?page=admin" aria-label="Login admin" title="Login admin">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><path d="M10 17l5-5-5-5M15 12H3"/></svg>
+  </a>
+  <main class="page">
+    <header class="brand" aria-label="Rumah Pijat Boyolali">
+      <img src="https://rumahpijatboyolali.github.io/format-pendaftaran/logo.png" alt="Logo Rumah Pijat Boyolali">
+      <div class="brand-name">Rumah Pijat Boyolali<span class="brand-place">Est. 2024</span></div>
+    </header>
+
+    <section class="card" aria-labelledby="thankYouTitle">
+      <div class="ornament" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.45" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 20.2s-7.4-4.5-7.4-10A4.2 4.2 0 0 1 12 7.8a4.2 4.2 0 0 1 7.4 2.4c0 5.5-7.4 10-7.4 10Z"/>
+          <path d="M8.2 13h2l1.1-2.2 1.8 4 1.1-1.8h1.6"/>
+        </svg>
       </div>
-      <div class="hero-bottom">Perhatian hangat, untuk kebutuhan Anda</div>
-    </section>
-    <section class="intro" aria-labelledby="intro-title">
-      <div data-reveal>
-        <p class="section-label">Dengan sepenuh hati</p>
-        <h2 id="intro-title">Keluhan Anda, kami dengarkan.</h2>
-      </div>
-      <div class="intro-copy" data-reveal>
-        <p>Kepercayaan Anda sangat berarti bagi kami. Setiap cerita dan kebutuhan Anda kami hargai. Kami menyambut Anda dengan perhatian serta pelayanan yang hangat.</p>
-        <p>Temukan pilihan pijat yang sesuai dengan kebutuhan Anda, lalu tentukan waktu reservasi dengan mudah.</p>
-        <p class="signature">Relax, Healthy and Happy</p>
+      <p class="eyebrow">Dengan sepenuh hati</p>
+      <h1 id="thankYouTitle">Terima Kasih Telah Mempercayakan <em>Keluhan Anda</em> Kepada Kami.</h1>
+      <div class="rule" aria-hidden="true"><span>✦</span></div>
+      <p class="message">Kepercayaan Anda sangat berarti bagi kami. Setiap cerita dan kebutuhan Anda kami hargai, dan kami siap menyambut Anda dengan perhatian serta pelayanan yang hangat.</p>
+      <p class="signature">Relax, Healthy and Happy</p>
+
+      <div class="actions">
+        <a class="button button-primary" href="https://rumahpijatboyolali.github.io/format-pendaftaran/">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 12 4l8 6.5V20h-6v-6h-4v6H4z"/></svg>
+          Buat Reservasi
+        </a>
+        <a class="button button-secondary" href="https://wa.me/6285134481399" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11.6a8 8 0 0 1-11.8 7L4 20l1.4-4.1A8 8 0 1 1 20 11.6Z"/><path d="M9 9c.6 2 2 3.4 4 4l1-.9 1.6.8-.3 1.5c-.1.4-.5.7-.9.7-3.7-.4-6.7-3.4-7.1-7.1 0-.4.3-.8.7-.9l1.5-.3.8 1.6L9 9Z"/></svg>
+          Hubungi WhatsApp
+        </a>
       </div>
     </section>
-    <section class="services" id="layanan" aria-labelledby="services-title">
-      <div class="section-head" data-reveal>
-        <div><p class="section-label">Pilihan layanan</p><h2 id="services-title">Pijat sesuai kebutuhan.</h2></div>
-        <p>Pilih treatment yang paling sesuai, kemudian isi detail reservasi Anda.</p>
-      </div>
-      <div class="service-list">
-        <article class="service" data-reveal><span class="service-no">01</span><div><h3>Pijat Capek</h3><p>Untuk membantu tubuh yang terasa lelah.</p></div></article>
-        <article class="service" data-reveal><span class="service-no">02</span><div><h3>Pijat Keluhan</h3><p>Pilih layanan sesuai keluhan dan kebutuhan Anda.</p></div></article>
-      </div>
-    </section>
-    <section class="offer" id="promo" aria-labelledby="offer-title">
-      <div class="offer-inner">
-        <div data-reveal><p class="section-label">Promo Pijat</p><h2 id="offer-title">Luangkan waktu untuk diri sendiri.</h2></div>
-        <div class="price-card" data-reveal>
-          <small>Promo pijat</small>
-          <div class="price">100K</div>
-          <p>Durasi ± 2 Jam</p>
-          <p class="fine-print">Belom Termasuk Ongkir Kalo Jauh</p>
-        </div>
-      </div>
-    </section>
-    <section class="closing" aria-labelledby="closing-title">
-      <p class="section-label" data-reveal>Rumah Pijat Boyolali</p>
-      <h2 id="closing-title" data-reveal>Siap kami sambut dengan hangat.</h2>
-      <p data-reveal>Atur jadwal pijat Anda melalui formulir reservasi.</p>
-      <a class="button button-primary" data-reveal href="https://rumahpijatboyolali.github.io/format-pendaftaran/">Buat Reservasi</a>
-    </section>
+
+    <footer class="footer">
+      <span>Rumah Pijat Boyolali · Relax, Healthy and Happy</span>
+      <nav class="social" aria-label="Media sosial">
+        <a href="https://www.instagram.com/rumahpijatboyolali" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.tiktok.com/@rumahpijatboyolali" target="_blank" rel="noopener">TikTok</a>
+      </nav>
+    </footer>
   </main>
-  <footer>
-    <span>Rumah Pijat Boyolali · Relax, Healthy and Happy</span>
-    <nav class="footer-social" aria-label="Media sosial">
-      <a href="https://www.instagram.com/rumahpijatboyolali" target="_blank" rel="noopener">Instagram</a>
-      <a href="https://www.tiktok.com/@rumahpijatboyolali" target="_blank" rel="noopener">TikTok</a>
-    </nav>
-  </footer>
-  <script>
-    const revealItems = document.querySelectorAll('[data-reveal]');
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduceMotion || !('IntersectionObserver' in window)) {
-      revealItems.forEach(item => item.classList.add('is-visible'));
-    } else {
-      document.documentElement.classList.add('motion-ready');
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (!entry.isIntersecting) return;
-          entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target);
-        });
-      }, { threshold: 0.14 });
-      revealItems.forEach(item => observer.observe(item));
-    }
-  </script>
 </body>
 </html>
