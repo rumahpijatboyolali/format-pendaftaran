@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#21160f">
-  <link rel="icon" type="image/png" href="logo-rumah-pijat-boyolali-transparan.png">
+  <link rel="icon" type="image/png" href="../terpakai/github/logo-rumah-pijat-boyolali-transparan.png">
   <meta name="description" content="Rumah Pijat Boyolali — Relax, Healthy and Happy.">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Rumah Pijat Boyolali">
@@ -62,10 +62,10 @@
       text-align:center;
       animation:card-arrive .9s .12s cubic-bezier(.2,.7,.2,1) both;
     }
-    .card:before,.card:after{position:absolute;content:"";pointer-events:none;border:1px solid rgba(184,137,61,.2);border-radius:50%}
-    .card:before{width:390px;height:390px;right:-235px;top:-235px}
-    .card:after{width:280px;height:280px;left:-205px;bottom:-205px}
-    .ornament{display:grid;place-items:center;width:58px;height:58px;margin:0 auto 20px;border:1px solid var(--gold-light);border-radius:50%;color:var(--gold);background:#fffdf8;box-shadow:0 0 0 7px rgba(184,137,61,.08);animation:seal-arrive .8s .38s cubic-bezier(.2,.7,.2,1) both}
+    .card:before,.card:after{position:absolute;content:"";pointer-events:none;border:1px solid rgba(184,137,61,.2);border-radius:50%;animation:ornament-drift 12s ease-in-out infinite alternate}
+    .card:before{width:390px;height:390px;right:-235px;top:-235px;box-shadow:0 0 0 13px rgba(184,137,61,.035),0 0 0 27px rgba(184,137,61,.025)}
+    .card:after{width:280px;height:280px;left:-205px;bottom:-205px;animation-delay:-6s;box-shadow:0 0 0 11px rgba(184,137,61,.035),0 0 0 23px rgba(184,137,61,.025)}
+    .ornament{display:grid;place-items:center;width:58px;height:58px;margin:0 auto 20px;border:1px solid var(--gold-light);border-radius:50%;color:var(--gold);background:#fffdf8;box-shadow:0 0 0 7px rgba(184,137,61,.08);animation:seal-arrive .8s .38s cubic-bezier(.2,.7,.2,1) both,ornament-breathe 4.5s 1.2s ease-in-out infinite}
     .ornament svg{width:26px;height:26px}
     .eyebrow{margin:0 0 17px;color:#987034;font-size:11px;font-weight:800;letter-spacing:.25em;text-transform:uppercase;animation:soft-rise .65s .48s ease both}
     h1{max-width:780px;margin:0 auto;color:var(--espresso);font-family:Georgia,"Times New Roman",serif;font-size:clamp(34px,7vw,66px);font-weight:500;letter-spacing:-.045em;line-height:1.12;animation:soft-rise .8s .58s cubic-bezier(.2,.7,.2,1) both}
@@ -101,6 +101,8 @@
     @keyframes seal-arrive{from{opacity:0;transform:translateY(8px) scale(.82) rotate(-8deg)}to{opacity:1;transform:translateY(0) scale(1) rotate(0)}}
     @keyframes line-open{to{transform:scaleX(1)}}
     @keyframes star-glow{0%,100%{opacity:.72;transform:scale(1)}50%{opacity:1;transform:scale(1.13)}}
+    @keyframes ornament-drift{from{transform:translate3d(0,0,0) rotate(-3deg);opacity:.72}to{transform:translate3d(5px,-7px,0) rotate(3deg);opacity:1}}
+    @keyframes ornament-breathe{0%,100%{box-shadow:0 0 0 7px rgba(184,137,61,.08),0 5px 16px rgba(184,137,61,.04)}50%{box-shadow:0 0 0 10px rgba(184,137,61,.11),0 8px 22px rgba(184,137,61,.09)}}
     @media(max-width:560px){
       body{padding:16px}
       .brand{margin-bottom:17px}
@@ -113,7 +115,7 @@
     }
     @media(prefers-reduced-motion:reduce){
       html{scroll-behavior:auto}
-      .page,.brand,.card,.ornament,.eyebrow,h1,.rule,.rule:before,.rule:after,.rule span,.message,.signature,.actions,.footer{animation:none!important;opacity:1!important;transform:none!important;filter:none!important}
+      .page,.brand,.card,.ornament,.eyebrow,h1,.rule,.rule:before,.rule:after,.rule span,.message,.signature,.actions,.footer,.card:before,.card:after{animation:none!important;opacity:1!important;transform:none!important;filter:none!important}
       .button{transition:none}.button:hover{transform:none}
     }
   </style>
@@ -124,7 +126,7 @@
   </a>
   <main class="page">
     <header class="brand" aria-label="Rumah Pijat Boyolali">
-      <img src="https://rumahpijatboyolali.github.io/format-pendaftaran/logo.png" alt="Logo Rumah Pijat Boyolali">
+      <img src="../terpakai/github/logo.png" alt="Logo Rumah Pijat Boyolali">
       <div class="brand-name">Rumah Pijat Boyolali<span class="brand-place">Est. 2024</span></div>
     </header>
 
@@ -146,7 +148,7 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 12 4l8 6.5V20h-6v-6h-4v6H4z"/></svg>
           Buat Reservasi
         </a>
-        <a class="button button-schedule" href="jadwal-pijat.html">
+        <a class="button button-schedule" href="../terpakai/github/jadwal-pijat.html">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18M8 14h.01M12 14h.01M16 14h.01M8 17h.01M12 17h.01"/></svg>
           Lihat Jadwal
         </a>
