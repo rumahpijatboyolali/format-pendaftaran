@@ -61,6 +61,7 @@
     .form-heading p:last-child { margin: 9px 0 0; color: var(--muted); font-size: 12px; line-height: 1.6; }
     form { display: grid; grid-template-columns: 1fr 1fr; gap: 15px 13px; }
     .field { display: grid; min-width: 0; align-content: start; gap: 7px; }
+    .field[hidden] { display: none; }
     .field.full, .place-info, .form-status, .submit { grid-column: 1 / -1; }
     .field label { color: #584a3a; font-size: 11px; font-weight: 750; }
     input, textarea, select { width: 100%; min-width: 0; min-height: 48px; padding: 12px 13px; border: 1px solid #ddd4c8; border-radius: 7px; color: var(--ink); background: #fff; font-size: 13px; transition: border-color .18s ease, box-shadow .18s ease, background .18s ease; }
@@ -175,6 +176,7 @@
             <option value="Pijat Capek">Pijat Capek</option>
             <option value="Pijat Keluhan">Pijat Keluhan</option>
           </select></div>
+          <div class="field full" id="complaintField" hidden><label for="keluhan">Keterangan keluhan *</label><textarea id="keluhan" name="keluhan" placeholder="Ceritakan keluhan yang dirasakan *" maxlength="1000"></textarea></div>
           <div class="field"><label for="tanggal">Tanggal reservasi *</label><input id="tanggal" name="tanggal" type="date" required></div>
           <div class="field"><label for="jam">Jam reservasi *</label><select id="jam" name="jam" required aria-label="Pilih jam reservasi">
             <option value="">Pilih Jam *</option>
@@ -221,6 +223,17 @@
     const form=document.getElementById('reservationForm');
     const dateInput=document.getElementById('tanggal');
     const submitButton=document.getElementById('submitBtn');
+    const treatmentSelect=document.getElementById('treatment');
+    const complaintField=document.getElementById('complaintField');
+    const complaintInput=document.getElementById('keluhan');
+    function updateComplaintField(){
+      const show=treatmentSelect.value==='Pijat Keluhan';
+      complaintField.hidden=!show;
+      complaintInput.required=show;
+      if(!show)complaintInput.value='';
+    }
+    treatmentSelect.addEventListener('change',updateComplaintField);
+    updateComplaintField();
     const locationButton=document.getElementById('locationBtn');
     const locationInput=document.getElementById('lokasi');
     const locationStatus=document.getElementById('locationStatus');
